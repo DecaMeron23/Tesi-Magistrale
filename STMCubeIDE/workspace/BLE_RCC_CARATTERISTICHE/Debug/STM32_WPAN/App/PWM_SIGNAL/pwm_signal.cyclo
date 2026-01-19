@@ -1,0 +1,4 @@
+../STM32_WPAN/App/PWM_SIGNAL/pwm_signal.c:3:6:PWM_SIGNAL_Init	2
+../STM32_WPAN/App/PWM_SIGNAL/pwm_signal.c:13:6:PWM_SIGNAL_ComputePWM	4
+../STM32_WPAN/App/PWM_SIGNAL/pwm_signal.c:37:10:PWM_SIGNAL_GetFrequency	3
+../STM32_WPAN/App/PWM_SIGNAL/pwm_signal.c:48:9:PWM_SIGNAL_GetDutyCycle	3

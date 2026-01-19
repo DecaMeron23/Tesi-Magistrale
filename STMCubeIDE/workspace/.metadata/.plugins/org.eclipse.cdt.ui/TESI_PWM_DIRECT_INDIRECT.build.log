@@ -1,0 +1,10 @@
+09:03:58 **** Build of configuration Debug for project TESI_PWM_DIRECT_INDIRECT ****
+make -j8 all 
+arm-none-eabi-size  TESI_PWM_DIRECT_INDIRECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16652	    144	   2232	  19028	   4a54	TESI_PWM_DIRECT_INDIRECT.elf
+Finished building: default.size.stdout
+ 
+
+09:03:58 Build Finished. 0 errors, 0 warnings. (took 71ms)
+

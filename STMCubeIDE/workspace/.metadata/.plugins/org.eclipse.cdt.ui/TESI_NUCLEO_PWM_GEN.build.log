@@ -1,0 +1,10 @@
+18:41:24 **** Incremental Build of configuration Debug for project TESI_NUCLEO_PWM_GEN ****
+make -j8 all 
+arm-none-eabi-size  TESI_NUCLEO_PWM_GEN.elf 
+   text	   data	    bss	    dec	    hex	filename
+  10992	     12	   1788	  12792	   31f8	TESI_NUCLEO_PWM_GEN.elf
+Finished building: default.size.stdout
+ 
+
+18:41:24 Build Finished. 0 errors, 0 warnings. (took 75ms)
+

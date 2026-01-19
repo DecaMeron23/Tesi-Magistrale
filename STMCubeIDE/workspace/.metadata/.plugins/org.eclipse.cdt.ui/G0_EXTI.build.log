@@ -1,0 +1,17 @@
+10:10:27 **** Build of configuration Debug for project G0_EXTI ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "G0_EXTI.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/emilio/Documenti/universita/tesi/STMCubeIDE/workspace/G0_EXTI/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="G0_EXTI.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: G0_EXTI.elf
+ 
+arm-none-eabi-size  G0_EXTI.elf 
+arm-none-eabi-objdump -h -S G0_EXTI.elf  > "G0_EXTI.list"
+   text	   data	    bss	    dec	    hex	filename
+   6024	     12	   1572	   7608	   1db8	G0_EXTI.elf
+Finished building: default.size.stdout
+ 
+Finished building: G0_EXTI.list
+ 
+
+10:10:28 Build Finished. 0 errors, 0 warnings. (took 275ms)
+

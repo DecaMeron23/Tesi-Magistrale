@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cHelpSettings>
+        
+    <project name="TESI_EVAL_PWM_READER">
+                
+        <provider id="org.eclipse.cdt.ui.provider1"/>
+            
+    </project>
+    
+    <project name="BLE_PROVA_LED_BSP">
+        <provider id="org.eclipse.cdt.ui.provider1"/>
+    </project>
+</cHelpSettings>

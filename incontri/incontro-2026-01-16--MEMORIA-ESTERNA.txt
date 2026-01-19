@@ -1,0 +1,66 @@
+Obiettivo:
+Iniziare a scrivere un Driver per la memoria utilizzando il protocollo SPI, per testarla utilizzo la scheda: "Cube V 1.0"
+Essa presenta 2 micorcontrollori:
+- STM32 WL5 MOCH6
+- STM32 WB5 MMGH6 
+
+Utilizzo la prima per controllare la memoria.
+
+Sulla sceda non è presente un debugger, quindi utilizzo quello della "Nucleo" per esegurlo. Per eseguire il debug, fare (ATTENZIONE TUTTO SPENTO!!!):
+NON COLLEGARE USB, COLLEGARE PER ULTIMO
+- Sulla "Nucleo" togliere i due jumper che abilitano per la connessione a device esterni (vedi data sheet "Nucleo-F411RE"), collegare i 6 cavi del debug + 1 per i 5 volt.
+- Sulla "Cube" collegarli alla "J9", l'ordine è lo stesso ma controllare per sicurezza sullo schematico (Dentro: "Fusion -> Cube"), quelli con pedice con "WL" sono per il primo micro (STM32 WL5 MOCH6TR) mentre quelli con WB sono per l'altro. Mentre i 5 volt vanno sulla "J10" vedi Schematico per vedere precisamente. Non è necessario aggiungere un'altra GND poiché viene già con il debug. Il pin 1 è indicato dalla silkscreen, per i connettori "J9" e "J10".
+
+Usare i cavi per alimentazione con i seguenti colori:
+- rosso: 5v
+- aranciaone 3.3v 
+- marrone GND
+
+Fatti i collegamente collegare USB alla Nucleo.
+
+
+Cercare sullo schematico la memoria, e tramite il data sheet come si utilizza.
+
+Funzioni:
+- readID legge il codice della memoria e risponde con un codice specifico magic-word.
+
+Creazione del driver: 
+Prendere come esempio di struttura il driver dato da Matteo.
+
+Consigli:
+- "#define" per definire i diversi comandi della memoria.
+- "enum" per dichiarare le diverse modalità di operazione.
+- Porre le funzioni con un ritorno di tipo booleano, false se errore.
+
+
+Attenzione la memoria è una NOR, ovvero tutti i bit sono a 1, quando nuova, poi quando si scrivono si pongono a zero solo quelli necessari. Con Erease si possono impostare di nuovo i bit a 1, ma questo non si può fare molte volte, infatti la memoria a un numero massimo di cancellazzioni prima che si danneggi --> Fare pochi erease, il meno possibile!
+
+L'idea è quella di avere:
+                                     -------------------------------------------------------------------------------------
+                                    |  0xFF ( 1 Byte ) |  Firmware Version  ( 1/2 Byte ) | Lunghezza pacchetti ( 1 Byte ) |  
+                                     -------------------------------------------------------------------------------------
+
+Quindi per cercare l'ultimo pacchetto caricato fare: 
+1. verfico se c'è 0xFF all'inizio sulla memoria (se non c'è è un problema!)
+2. verfico se c'è la versione del firmware, se non c'è la memoria non è stata mai utilizzata scrivi versione firmware, lunghezza pacchetti poi vai a passo X. Se la versione firmware è presente continuare con il passo successivo.
+3. Verificare la lunghezza dei pacchetti.
+4. Inizio della ricerca del primo pacchetto libero: si guardano il primo byte (o i primi 'n' byte) se tutti i bit sono a 1 allora, molto probabilmente, il pacchetto non è stato scritto sennò continuare la ricerca. ATTENZIONE se si legge 0xFF e poi dopo c'è una versione del firmware allora controllare lunghezza pacchetto e ricomiciare la ricerca.
+
+
+Attenzione è possibile con il cambio del firmware le dimensioni dei pacchetti cambiano.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Inizio lavoro:
+
+Informazioni:
+- HOLD: funzione che non viene utilizzata, permette di bloccare determinate operazioni per consentire di effetuare altre operazioni al Micro. non la utilizziamo quindi la  teniamo HIGH quando effettuiamo le operazioni.
+- CS: Deve essere posto a high, per selezionare il dispositivi porre a low
+
+Per la funzione di Init verificare il se si riesce a leggere l'ID del dispositivo
+
+La registrazione del valore viene eseguita quando è presente un fronte di salita della linea del clock, quindi si lavora in modalità del SPI: "0 0" o "1 1" (polarita e fase).
+ 

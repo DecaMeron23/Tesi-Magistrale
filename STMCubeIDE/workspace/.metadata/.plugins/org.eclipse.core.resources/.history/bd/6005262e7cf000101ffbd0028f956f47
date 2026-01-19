@@ -1,0 +1,15 @@
+/*
+ * application.h
+ *
+ *  Created on: 13 gen 2026
+ *      Author: emilio
+ */
+
+#ifndef _APPLICATION_H
+#define _APPLICATION_H
+
+void APP_GetFrequency(void);
+void APP_StartMeasurement(void);
+void APP_StopMeasurement(void);
+
+#endif /* _APPLICATION_H */

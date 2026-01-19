@@ -1,0 +1,21 @@
+/*
+ * srv_pwm_reader.h
+ *
+ *  Created on: 13 gen 2026
+ *      Author: emilio
+ */
+
+#ifndef _SRV_PWM_READER_H
+#define _SRV_PWM_READER_H
+
+#include "main.h"
+#include "custom_stm.h"
+
+void SRV_PWM_READER_ReadPWM(uint8_t *CharData);
+
+void SRV_PWM_READER_StartNotifyPWM();
+void SRV_PWM_READER_StopNotifyPWM();
+void SRV_PWM_READER_CallBack_ReadPWM();
+void SRV_PWM_READER_CallBack_ReadPWM_ISR();
+
+#endif /* _SRV_PWM_READER_H */

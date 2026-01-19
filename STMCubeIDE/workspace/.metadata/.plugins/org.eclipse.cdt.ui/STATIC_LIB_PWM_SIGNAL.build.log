@@ -1,0 +1,16 @@
+11:28:25 **** Incremental Build of configuration Debug for project STATIC_LIB_PWM_SIGNAL ****
+make all 
+Building file: ../pwmsignal.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"pwmsignal.d" -MT"pwmsignal.o" -o "pwmsignal.o" "../pwmsignal.c"
+Finished building: ../pwmsignal.c
+ 
+Building target: libSTATIC_LIB_PWM_SIGNAL.a
+Invoking: Cross GCC Archiver
+ar -r -P  "libSTATIC_LIB_PWM_SIGNAL.a" ./pwmsignal.o   
+ar: creazione di libSTATIC_LIB_PWM_SIGNAL.a
+Finished building target: libSTATIC_LIB_PWM_SIGNAL.a
+ 
+
+11:28:26 Build Finished. 0 errors, 0 warnings. (took 70ms)
+

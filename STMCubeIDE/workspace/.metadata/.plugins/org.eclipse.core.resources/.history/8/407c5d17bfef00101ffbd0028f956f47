@@ -1,0 +1,16 @@
+Applicazione BLE
+Ci sono due Servizi:
+1. Generico, impostare l'orario
+2. Per leggere una variabile, con read o notify.
+
+
+Servizio 1 (GENERAL)
+Una caratteristica di WRITE per impostare l'orario.
+
+
+Servizio 2 (APP)
+Tre caratteristiche:
+1. 
+2. 
+3. 
+

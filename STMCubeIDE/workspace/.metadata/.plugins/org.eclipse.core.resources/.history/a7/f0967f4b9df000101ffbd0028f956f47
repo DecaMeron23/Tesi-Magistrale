@@ -1,0 +1,18 @@
+/*
+ * srv_pwm_reader.h
+ *
+ *  Created on: 13 gen 2026
+ *      Author: emilio
+ */
+
+#ifndef _SRV_PWM_READER_H
+#define _SRV_PWM_READER_H
+
+#include "main.h"
+
+void SRV_APP_PwmReader(uint8_t *UpdateCharData);
+void SRV_APP_StartPwmNotyfy();
+void SRV_APP_StopPwmNotyfy();
+
+
+#endif /* _SRV_PWM_READER_H */

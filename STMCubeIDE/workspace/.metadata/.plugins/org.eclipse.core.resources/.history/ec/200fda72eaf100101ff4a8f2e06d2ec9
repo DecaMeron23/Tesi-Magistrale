@@ -1,0 +1,52 @@
+/*
+ * srv_pwm.h
+ *
+ *  Created on: 14 gen 2026
+ *      Author: emilio
+ */
+
+#ifndef _SRV_PWM_H
+#define _SRV_PWM_H
+
+#include "main.h"
+
+/**
+ * Inizzializzazione del servizio PWM
+ * @param IDTimerFrequency		ID dell'Hardware Timer Server per le notifiche della frequenza
+ * @param IDTimerDutyCycle		ID dell'Hardware Timer Server per le notifiche del duty cycle
+ * @param pDataNotify			Puntatore all'array dei dati per le notify
+ */
+void SRV_PWM_Init(uint8_t IDTimerFrequency, uint8_t IDTimerDutyCycle, uint8_t *pDataNotify);
+
+/**
+ * Lettura della frequenza in Hz
+ *
+ * @param pData 	[out] Dove verranno salvati i valori, 4 Byte
+ */
+void SRV_PWM_ReadFrequency(uint8_t *pData);
+
+/**
+ * Start o Stop delle notifiche relative alla frequenza
+ *
+ * @param state		Se diverso da zero allora si esegue lo start della notifica, altrimenti si stoppano.
+ */
+void SRV_PWM_NotifyFrequency(uint8_t state);
+
+/**
+ * Lettura del duty cylce in percentuale
+ *
+ * @param pData		[out] Dove verranno salvati i valori, 1 Byte
+ */
+void SRV_PWM_ReadDutyCycle(uint8_t *pData);
+
+/**
+ * Start o Stop delle notifiche relative al duty cycle
+ *
+ * @param state		Se diverso da zero allora si esegue lo start della notifica, altrimenti si stoppano.
+ */
+void SRV_PWM_NotifyDutyCycle(uint8_t state);
+
+
+//void SRV_PWM_HandlerPWMSignal(TIM_HandleTypeDef *htim);
+
+#endif /* _SRV_PWM_H */

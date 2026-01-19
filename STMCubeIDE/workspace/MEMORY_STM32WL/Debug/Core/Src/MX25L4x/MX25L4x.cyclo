@@ -1,0 +1,10 @@
+../Core/Src/MX25L4x/MX25L4x.c:42:6:MX25L4_Init	1
+../Core/Src/MX25L4x/MX25L4x.c:64:6:MX25L4_ReadID	1
+../Core/Src/MX25L4x/MX25L4x.c:81:6:MX25L4_ReadData	1
+../Core/Src/MX25L4x/MX25L4x.c:100:6:MX25L4_Sleep	1
+../Core/Src/MX25L4x/MX25L4x.c:107:6:MX25L4_Wakeup	1
+../Core/Src/MX25L4x/MX25L4x.c:118:13:CS_Select	1
+../Core/Src/MX25L4x/MX25L4x.c:123:13:CS_Unselect	1
+../Core/Src/MX25L4x/MX25L4x.c:128:13:SPI_Transmit	1
+../Core/Src/MX25L4x/MX25L4x.c:133:13:SPI_Receive	1
+../Core/Src/MX25L4x/MX25L4x.c:138:6:SPI_SendCMD	1

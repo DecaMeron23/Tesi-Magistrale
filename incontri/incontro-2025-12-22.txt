@@ -1,0 +1,23 @@
+!! NON TOCCARE PISTE USB !! DP DN USB_N USB_N
+
+Da fare nel design:
+sistemare le scritte (le silkskin), metterle vicine al componente. Non troppo piccole sennò non si possono stampare size: 1mm "height" (Visto dal sito)
+
+i silkskin values non vengono stampati quindi si possono nascondere  
+
+ctrl + h togli il riempimento, oppure polygon --> comando "show" o "hide" 
+
+per vedere la preview manufacturing --> preview
+
+Sito:
+jlpcb capabilities: info sulle regole della drc: https://jlcpcb.com/capabilities/pcb-capabilities
+jpcpcb: upload il file zip --> dfm check. Link: https://jlcdfm.com/ 
+
+errori da guardare:
+- trace spacing 
+- silkskin
+
+per scaricare il file zip da fusion: manufacturing export --> .zip
+
+
+

@@ -1,0 +1,9 @@
+2025-12-13 08:47:51,807 [INFO] Activator:176 - 
+
+
+2025-12-13 08:47:51,817 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-13 08:48:02,153 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 13, 2025 8:48:02 AM java.util.prefs.FileSystemPreferences$6 run
+2025-12-13 08:48:02,155 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Prefs file removed in background /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-13 08:48:02,156 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-13 08:48:02,499 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-13 09:45:13,384 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

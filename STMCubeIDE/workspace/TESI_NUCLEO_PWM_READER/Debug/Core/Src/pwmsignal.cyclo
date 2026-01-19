@@ -1,0 +1,4 @@
+../Core/Src/pwmsignal.c:6:6:initializePWMSignal	1
+../Core/Src/pwmsignal.c:12:6:computeFrequency	2
+../Core/Src/pwmsignal.c:27:10:getFrequency	2
+../Core/Src/pwmsignal.c:33:10:getDutyCycle	2

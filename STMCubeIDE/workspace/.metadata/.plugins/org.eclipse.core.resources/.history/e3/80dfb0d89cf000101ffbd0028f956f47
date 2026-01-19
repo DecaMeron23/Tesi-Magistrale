@@ -1,0 +1,25 @@
+/*
+ * srv_general.h
+ *
+ *  Created on: 13 gen 2026
+ *      Author: emilio
+ */
+
+#ifndef APP_APPLICATION_SRV_GENERAL_H_
+#define APP_APPLICATION_SRV_GENERAL_H_
+
+#include "main.h"
+
+/**
+ * Aggiornamento del calendario
+ * @param uint8_t data array contenente i dati del calendario
+ */
+void SRV_GENERAL_WriteTime(uint8_t *data);
+
+/**
+ * Lettura del calendario e trasmissione BLE
+ * @param uint8_t data array che verrà trasmesso
+ */
+void SRV_GENERAL_ReadTime(uint8_t *data);
+
+#endif /* APP_APPLICATION_SRV_GENERAL_H_ */

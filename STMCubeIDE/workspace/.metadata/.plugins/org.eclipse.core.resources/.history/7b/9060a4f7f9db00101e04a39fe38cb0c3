@@ -1,0 +1,28 @@
+#include "pwmsignal.h"
+#include "main.h"
+
+void computeFrequency(PWMSignal *s, TIM_HandleTypeDef *htim, int channel, uint8_t is_rising)
+{
+	uint32_t current = HAL_TIM_ReadCapturedValue(htim, channel);
+
+	if (is_rising)
+	{
+		s->cycle_time = current - s->prec;
+		s->prec = current;
+	}
+	else
+	{
+		s->up_time = current - s->prec;
+	}
+}
+
+uint32_t getFrequency(PWMSignal *s, const uint32_t FR_CLK, const uint32_t PRE_SCALER)
+{
+	return (FR_CLK / PRE_SCALER) / s->cycle_time;
+}
+uint32_t getDutyCycle(PWMSignal *s)
+{
+	if(s->cycle_time == 0) return 0;
+	return ((float) s->up_time / s->cycle_time) * 100.0;
+}
+

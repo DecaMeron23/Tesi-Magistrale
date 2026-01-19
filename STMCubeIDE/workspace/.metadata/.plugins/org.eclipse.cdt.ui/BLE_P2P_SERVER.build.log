@@ -1,0 +1,10 @@
+08:51:13 **** Incremental Build of configuration Debug for project BLE_P2P_SERVER ****
+make -j8 all 
+arm-none-eabi-size  BLE_P2P_SERVER.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31428	   2293	   3347	  37068	   90cc	BLE_P2P_SERVER.elf
+Finished building: default.size.stdout
+ 
+
+08:51:14 Build Finished. 0 errors, 0 warnings. (took 70ms)
+

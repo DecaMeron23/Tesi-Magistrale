@@ -1,0 +1,10 @@
+10:04:38 **** Incremental Build of configuration Debug for project STM32WB5MM_TEST_BSP ****
+make -j8 all 
+arm-none-eabi-size  STM32WB5MM_TEST_BSP.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32880	     12	   3764	  36656	   8f30	STM32WB5MM_TEST_BSP.elf
+Finished building: default.size.stdout
+ 
+
+10:04:38 Build Finished. 0 errors, 0 warnings. (took 66ms)
+

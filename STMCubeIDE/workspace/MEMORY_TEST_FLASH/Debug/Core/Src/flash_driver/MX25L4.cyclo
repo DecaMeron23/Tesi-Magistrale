@@ -1,0 +1,7 @@
+../Core/Src/flash_driver/MX25L4.c:12:13:CS_Select	1
+../Core/Src/flash_driver/MX25L4.c:16:13:CS_Unselect	1
+../Core/Src/flash_driver/MX25L4.c:21:10:MX25L4_ReadID	1
+../Core/Src/flash_driver/MX25L4.c:32:6:Flash_WaitBusy	2
+../Core/Src/flash_driver/MX25L4.c:44:6:MX25L4_WriteData	2
+../Core/Src/flash_driver/MX25L4.c:76:6:MX25L4_ReadData	1
+../Core/Src/flash_driver/MX25L4.c:85:6:MX25L4_EraseSector	1

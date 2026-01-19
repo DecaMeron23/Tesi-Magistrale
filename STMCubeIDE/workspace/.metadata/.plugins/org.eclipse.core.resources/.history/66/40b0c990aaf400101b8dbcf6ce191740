@@ -1,0 +1,101 @@
+/*
+ * MX25L4006E.c
+ *
+ *  Created on: 16 gen 2026
+ *      Author: emilio
+ */
+
+#include "MX25L4x.h"
+
+extern SPI_HandleTypeDef MX25L4_hspi;
+
+// Define dei comandi
+#define MX25L4_CMD_WREN 0x06		/**< Write Enable: comando di abilitazione alla scrittura*/
+#define MX25L4_CMD_WRDI 0x04		/**< Write Disable: comando di disabilitazione alla scrittura*/
+#define MX25L4_CMD_RDID 0x9F		/**< Read Id: comando di lettura dell'ID del produttore più 2-Byte di ID della memoria*/
+#define MX25L4_CMD_READ 0x03		/**< Read: Comando di lettura, sono necessari 3 parametri e che il CS sia LOW */
+#define MX25L4_CMD_SE 	0x20		/**< Selector Erease: pone a HIGH tutti i bit del settore, necessita di 3 parametri */
+#define MX25L4_CMD_BE 	0x52		/**< Block Erease: pone a HIGH tutti i bit del blocco, necessita di 3 parametri */
+#define MX25L4_CMD_CE 	0x60		/**< Chip Erease: pone a HIGH tutti i bit del chip */
+#define MX25L4_CMD_DP 	0xB9		/**< Deep Power: il dispositivo va in modalità low power*/
+#define MX25L4_CMD_RDP 	0xAB		/**< Release Deep Power: il dispositivo esce dalla modalità low power*/
+
+#define MX25L4_MAX_RW_TIME 3000u  /**< Tempo massimo per la lettura e scrittura*/
+#define MX25L4_MAX_CMD_TIME 3000u  	/**< Tempo massimo per l'invio dei comandi */
+
+// Definizione delle macro
+#define MX25L4_BYTE0(VAL)		((VAL) & 0xFF)
+#define MX25L4_BYTE1(VAL)		((VAL >> 8) & 0xFF)
+#define MX25L4_BYTE2(VAL)		((VAL >> 16) & 0xFF)
+#define MX25L4_BYTE3(VAL)		((VAL >> 24) & 0xFF)
+
+// Definizione delle funzioni
+void CS_Select();
+void CS_Unselect();
+
+// Funzioni Public
+bool MX25L4_Init(void)
+{
+	bool isOK = true;
+
+	// Inizializzazione - CS e HOLD
+	CS_Unselect();
+	HAL_GPIO_WritePin(MX25L4_HOLD_Port, MX25L4_HOLD_Pin, GPIO_PIN_SET);
+
+	// Inizializzazione - SPI [GIÀ FATTO NEL MAIN.. DEVO FARLO?]
+	isOK &= HAL_SPI_Init(&MX25L4_hspi) == HAL_OK;
+
+	// Verifica del funzionamento del dispositivo
+	uint8_t memID[3];
+	isOK &= MX25L4_ReadID((uint8_t*) memID);
+
+	isOK &= (memID[0] == MX25L4_BYTE2(MX25L4_ID));
+	isOK &= (memID[1] == MX25L4_BYTE1(MX25L4_ID));
+	isOK &= (memID[2] == MX25L4_BYTE0(MX25L4_ID));
+
+	return isOK;
+}
+
+bool MX25L4_ReadID(uint8_t *aID)
+{
+	uint8_t cmd = MX25L4_CMD_RDID;
+	bool isOK = true;
+
+	// Chip Select - ON
+	CS_Select();
+
+	isOK &= HAL_SPI_Transmit(&MX25L4_hspi, &cmd, 1, 100) == HAL_OK;
+	isOK &= HAL_SPI_Receive(&MX25L4_hspi, aID, 3, 100) == HAL_OK;
+
+	// Chip Select - OFF
+	CS_Unselect();
+
+	return isOK;
+}
+
+bool MX25L4_ReadData(uint8_t *aData, uint8_t size, uint32_t address)
+{
+	uint8_t isOK = true;
+	uint8_t cmd[4] =
+	{ MX25L4_CMD_READ, MX25L4_BYTE2(address), MX25L4_BYTE1(address), MX25L4_BYTE0(address) };
+
+	isOK &= HAL_SPI_Transmit(&MX25L4_hspi, cmd, 4, 100);
+	isOK &= HAL_SPI_Receive(&MX25L4_hspi, aData, size, 2000);
+
+	return isOK;
+
+}
+
+bool MX25L4_WriteData(void);
+
+// Funzioni Private
+
+void CS_Select()
+{
+	HAL_GPIO_WritePin(MX25L4_CS_Port, MX25L4_CS_Pin, GPIO_PIN_RESET);
+}
+
+void CS_Unselect()
+{
+	HAL_GPIO_WritePin(MX25L4_CS_Port, MX25L4_CS_Pin, GPIO_PIN_SET);
+}

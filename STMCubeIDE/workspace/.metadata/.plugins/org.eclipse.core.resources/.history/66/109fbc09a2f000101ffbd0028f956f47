@@ -1,0 +1,40 @@
+/*
+ * srv_pwm_reader.c
+ *
+ *  Created on: 13 gen 2026
+ *      Author: emilio
+ */
+
+#include "srv_pwm_reader.h"
+#include "custom_stm.h"
+#include "stdlib.h"
+
+uint8_t DataPwmNotify[512];
+
+
+uint32_t getPWM();
+
+void SRV_APP_PwmReader()
+{
+	uint32_t freq = getPWM();
+	DataPwmNotify[0] = freq & 0xFF000000;
+	DataPwmNotify[1] = freq & 0x00FF0000;
+	DataPwmNotify[2] = freq & 0x0000FF00;
+	DataPwmNotify[3] = freq & 0x000000FF;
+	Custom_STM_App_Update_Char(CUSTOM_STM_VARIABLE_CHAR, (uint8_t*) DataPwmNotify);
+
+}
+
+void SRV_APP_StartPwmNotify()
+{
+
+}
+void SRV_APP_StopPwmNotify()
+{
+	// TODO
+}
+
+uint32_t getPWM()
+{
+	return rand() % 10000 + 1000;
+}

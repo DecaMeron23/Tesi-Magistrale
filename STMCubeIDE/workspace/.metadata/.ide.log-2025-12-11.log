@@ -1,0 +1,11 @@
+2025-12-11 15:11:50,583 [INFO] Activator:176 - 
+
+
+2025-12-11 15:11:50,586 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-11 15:11:52,888 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 11, 2025 3:11:52 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-11 15:11:52,888 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Prefs file removed in background /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-11 15:11:52,889 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-11 15:11:53,153 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 11, 2025 3:11:53 PM org.apache.lucene.internal.vectorization.VectorizationProvider lookup
+2025-12-11 15:11:53,154 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-11 15:11:53,154 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-11 15:11:53,793 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 

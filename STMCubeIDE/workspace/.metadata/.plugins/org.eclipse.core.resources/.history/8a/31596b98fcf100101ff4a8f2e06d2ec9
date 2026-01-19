@@ -1,0 +1,30 @@
+/*
+ * srv_general.h
+ *
+ *  Created on: 14 gen 2026
+ *      Author: emilio
+ */
+
+#ifndef _SRV_GENERAL_H_
+#define _SRV_GENERAL_H_
+
+#include "main.h"
+
+/**
+ * Inizializzazione del servizio
+ */
+void SRV_GENERAL_Init(void);
+
+/**
+ * Scrittura del calendario
+ * @param uint8_t *CharData parametri ricevuti in formato BCD YY/MM/DD WW HH:MM:SS, 7 Byte
+ */
+void Custom_APP_WriteCalendar(uint8_t *CharData);
+
+/*
+ * Lettura da calendario
+ * @param uitn8_t *CharData parametro che viene aggiornato con i valori della data attuale in formato BCD YY/MM/DD WW HH:MM:SS, 7 Byte
+ */
+void Custom_APP_ReadCalendar(uint8_t *CharData);
+
+#endif /* _SRV_GENERAL_H_ */

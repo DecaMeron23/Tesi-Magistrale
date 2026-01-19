@@ -1,0 +1,14 @@
+1768227784699	Rename resource 'tlc59731.h'
+1768227789155	Rename resource 'tlc59731.c'
+1768227794484	Rename resource 'RGB_LED'
+1768230085040	Move 'TLC59731' to 'BLE_RCC_CARATTERISTICHE'
+1768302382788	Extract Method Refactoring
+1768305536640	Rename resource 'easyset'
+1768305545872	Rename resource 'TLC'
+1768305552861	Rename resource 'tlc59731.c'
+1768305557796	Rename resource 'tlc59731.h'
+1768307016610	Rename resource 'pwm_reader.h'
+1768389914401	Rename resource 'Service'
+1768397849749	Extract Method Refactoring
+1768461754443	Rename resource 'pwmsignal.c'
+1768461759559	Rename resource 'pwmsignal.h'

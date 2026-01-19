@@ -1,0 +1,10 @@
+15:42:21 **** Incremental Build of configuration Release for project NUCLEO_WB55_BLE_OTA ****
+make -j8 all 
+arm-none-eabi-size  NUCLEO_WB55_BLE_OTA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15452	   2417	   2596	  20465	   4ff1	NUCLEO_WB55_BLE_OTA.elf
+Finished building: default.size.stdout
+ 
+
+15:42:21 Build Finished. 0 errors, 0 warnings. (took 70ms)
+

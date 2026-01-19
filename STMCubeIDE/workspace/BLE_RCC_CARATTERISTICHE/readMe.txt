@@ -1,0 +1,27 @@
+Applicazione BLE
+Ci sono due Servizi:
+1. Generico, impostare l'orario
+2. Per leggere una variabile, con read o notify.
+
+
+Servizio 1 (GENERAL)
+Una caratteristica di WRITE e READ per impostare l'orario per vedere l'orario.
+Per la scrittura dell'orario si utilizza il seguente formato:
+YYMMDDWW HH:MM:SS
+Usiamo 7 Byte per informazione
+1. YY anno
+2. MM mese
+3. DD Giorno
+4. WW giorno della settimana
+5. HH Ora
+6. MM minuti
+7. SS secondi
+
+
+Servizio 2 (APP)
+Tre caratteristiche:
+1. Read del valore della variabile 
+2. Notify del cambiamento della variabile
+3. Attivazione/Disattivazione della Notify
+
+In particolare è presente un task schedulato che ogni x secondo, ad esempio 3 secondi, legge un dato e lo aggiorna

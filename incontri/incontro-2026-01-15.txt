@@ -1,0 +1,3 @@
+definire task per ble in ACI/HCI mentre quelli non per il BLE nell'altra
+
+

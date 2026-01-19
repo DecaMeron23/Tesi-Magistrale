@@ -1,0 +1,55 @@
+/*
+ * srv_general.c
+ *
+ *  Created on: 13 gen 2026
+ *      Author: emilio
+ */
+
+#include  "srv_general.h"
+#include  "custom_stm.h"
+
+void SRV_GENERAL_WriteTime(uint8_t *data)
+{
+	RTC_DateTypeDef sDate =
+	{ 0 };
+	RTC_TimeTypeDef sTime =
+	{ 0 };
+
+	sDate.Year = data[0];
+	sDate.Month = data[1];
+	sDate.Date = data[2];
+	sDate.WeekDay = data[3];
+
+	sTime.Hours = data[4];
+	sTime.Minutes = data[5];
+	sTime.Seconds = data[6];
+
+	RTC_HandleTypeDef *hrtc = MAIN_GetHandelrRTC();
+	HAL_RTC_SetDate(hrtc, &sDate, RTC_FORMAT_BCD);
+	HAL_RTC_SetTime(hrtc, &sTime, RTC_FORMAT_BCD);
+
+}
+
+void SRV_GENERAL_ReadTime(uint8_t *data)
+{
+
+	RTC_DateTypeDef sDate =
+	{ 0 };
+	RTC_TimeTypeDef sTime =
+	{ 0 };
+
+	RTC_HandleTypeDef *hrtc = MAIN_GetHandelrRTC();
+	HAL_RTC_GetDate(hrtc, &sDate, RTC_FORMAT_BCD);
+	HAL_RTC_GetTime(hrtc, &sTime, RTC_FORMAT_BCD);
+
+	data[0] = sDate.Year;
+	data[1] = sDate.Month;
+	data[2] = sDate.Date;
+	data[3] = sDate.WeekDay;
+	data[4] = sTime.Hours;
+	data[5] = sTime.Minutes;
+	data[6] = sTime.Seconds;
+
+	Custom_STM_App_Update_Char(CUSTOM_STM_TIME_CHAR, (uint8_t*) data);
+
+}

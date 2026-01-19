@@ -1,0 +1,7 @@
+15:37:26 **** Incremental Build of configuration Debug for project NUCLEO_WB55_BLE_HeartRate_OTA ****
+make -j8 all 
+make: *** No rule to make target '/home/emilio/Documenti/Utilities/lpm/tiny_lpm/stm32_lpm.c', needed by 'Utilities/stm32_lpm.o'.  Stop.
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+15:37:26 Build Failed. 1 errors, 0 warnings. (took 70ms)
+

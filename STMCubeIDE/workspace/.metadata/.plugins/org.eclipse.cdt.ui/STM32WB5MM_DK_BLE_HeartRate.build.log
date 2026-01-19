@@ -1,0 +1,10 @@
+18:41:24 **** Incremental Build of configuration Debug for project STM32WB5MM_DK_BLE_HeartRate ****
+make -j8 all 
+arm-none-eabi-size  STM32WB5MM_DK_BLE_HeartRate.elf 
+   text	   data	    bss	    dec	    hex	filename
+  89232	    710	  14895	 104837	  19985	STM32WB5MM_DK_BLE_HeartRate.elf
+Finished building: default.size.stdout
+ 
+
+18:41:24 Build Finished. 0 errors, 0 warnings. (took 126ms)
+

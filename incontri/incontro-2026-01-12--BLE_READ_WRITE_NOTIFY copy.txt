@@ -1,0 +1,23 @@
+Non utilizzare più applicazione ST BLE toolbox usare: "nRF connect"
+
+Fare prove con BLE:
+- Read
+- Write
+- Notify
+In particolare, creare un nuovo progetto e creare template custom BLE. 
+
+- Write, impostare la RTC con data e orario
+- Read, read della variabile, e della data 
+- Notify, su una variabile che viene aggiornata ogni "x" secondi dallo schedulatore. "HS" "Timer" 
+
+Estendere a piacere, ad esempio: dividere in 2 servizi uno per data l'altro per la variabile e/o mettere una caratteristica di write per attivare il Notify.
+
+Aggiungere informazioni di debug.
+
+ISR funzioni che bloccano ogni interrupt -> rimanere il meno tempo possibile.
+
+L'RTC ha due modalità per visualizzare la data modalità RTC:
+- binario
+- BCD (Bynari-Coded  Decimal) in particolare si scrivono i numeri in esadecimale come se fossero in decimale: 26-01-13 --> 0X260113
+
+"LDO backup PIN VBAT batteria di backup" 

@@ -1,0 +1,5 @@
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Examples/HAL/HAL_TimeBase/Src/stm32wbxx_it.c:72:6:SVC_Handler	1
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Examples/HAL/HAL_TimeBase/Src/stm32wbxx_it.c:85:6:PendSV_Handler	1
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Examples/HAL/HAL_TimeBase/Src/stm32wbxx_it.c:98:6:SysTick_Handler	1
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Examples/HAL/HAL_TimeBase/Src/stm32wbxx_it.c:120:6:TIM2_IRQHandler	1
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Examples/HAL/HAL_TimeBase/Src/stm32wbxx_it.c:135:6:EXTI4_IRQHandler	1

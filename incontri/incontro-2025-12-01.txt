@@ -1,0 +1,12 @@
+
+Vedere schematico su fusion e capire bene:
+  - led driver 
+  - lettura fotodiodo
+  - connettore debug
+
+Parte di Firmware:
+ - Tutorial al link: "https://www.youtube.com/watch?v=gL8OoS9E1rw&list=PLnMKNibPkDnFCosVVv98U5dCulE6T3Iy8" è fatto per 1.19v vedere con la 2.0v come cambia. Guarda fino a ep.5 e anche ep. 11 
+  - Per vedere le diverse periferiche: cerca nome scheda (es:nulceo _F411RE_) datasheet -> user manual spiegano periferiche
+  - Sul sito ST, sezione cad resurces, c'è lo schematico della scheda. Con i relativi pin connessi.
+  - generazione e lettura di PWM (PWM input mod )
+

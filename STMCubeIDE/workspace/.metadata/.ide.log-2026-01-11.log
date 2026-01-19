@@ -1,0 +1,52 @@
+2026-01-11 07:43:15,472 [INFO] Activator:176 - 
+
+
+2026-01-11 07:43:15,476 [INFO] Activator:177 - !SESSION log4j initialized
+2026-01-11 07:43:18,673 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-01-11 10:25:00,547 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2026-01-11 10:28:20,860 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2026-01-11 10:28:31,812 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2026-01-11 10:28:32,793 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2026-01-11 10:30:08,757 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2026-01-11 10:31:01,840 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2026-01-11 10:34:23,152 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2026-01-11 10:35:47,287 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2026-01-11 10:36:03,037 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2026-01-11 10:36:05,276 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2026-01-11 10:36:06,738 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2026-01-11 10:36:08,440 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2026-01-11 10:36:09,834 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2026-01-11 10:37:39,383 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2026-01-11 10:37:45,708 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Exception in thread "SWV client thread" java.lang.NullPointerException: Cannot invoke "com.st.stm32cube.ide.mcu.debug.swv.core.SWVPlugin.isDebugging()" because "com.st.stm32cube.ide.mcu.debug.swv.core.SWVPlugin.plugin" is null
+2026-01-11 10:37:45,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVPlugin.debugTrace(SWVPlugin.java:85)
+2026-01-11 10:37:45,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.TRACE(SWVClient.java:768)
+2026-01-11 10:37:45,710 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.readByte(SWVClient.java:296)
+2026-01-11 10:37:45,711 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.getNextByte(SWVClient.java:277)
+2026-01-11 10:37:45,712 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.run(SWVClient.java:313)
+2026-01-11 10:38:23,611 [INFO] Activator:176 - 
+
+
+2026-01-11 10:38:23,612 [INFO] Activator:177 - !SESSION log4j initialized
+2026-01-11 10:38:26,966 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-01-11 14:45:03,161 [INFO] Activator:176 - 
+
+
+2026-01-11 14:45:03,163 [INFO] Activator:177 - !SESSION log4j initialized
+2026-01-11 14:45:04,893 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-01-11 17:23:29,193 [INFO] Activator:176 - 
+
+
+2026-01-11 17:23:29,195 [INFO] Activator:177 - !SESSION log4j initialized
+2026-01-11 17:23:33,247 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-01-11 17:48:27,942 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Exception in thread "SWV client thread" java.lang.NullPointerException: Cannot invoke "com.st.stm32cube.ide.mcu.debug.swv.core.SWVPlugin.isDebugging()" because "com.st.stm32cube.ide.mcu.debug.swv.core.SWVPlugin.plugin" is null
+2026-01-11 17:48:27,944 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVPlugin.debugTrace(SWVPlugin.java:85)
+2026-01-11 17:48:27,945 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.TRACE(SWVClient.java:768)
+2026-01-11 17:48:27,946 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.readByte(SWVClient.java:296)
+2026-01-11 17:48:27,947 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.getNextByte(SWVClient.java:277)
+2026-01-11 17:48:27,948 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.run(SWVClient.java:313)
+2026-01-11 17:48:55,612 [INFO] Activator:176 - 
+
+
+2026-01-11 17:48:55,614 [INFO] Activator:177 - !SESSION log4j initialized
+2026-01-11 17:48:59,714 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-01-11 18:19:32,036 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SWT SessionManagerDBus: Failed to UnregisterClient: GDBus.Error:org.freedesktop.DBus.Error.NoReply: Message recipient disconnected from message bus without replying

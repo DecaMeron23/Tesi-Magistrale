@@ -1,0 +1,4 @@
+#Fri Dec 12 15:39:46 CET 2025
+__DEFAULT__=false
+expression=Allow editors to override the margin column
+org.eclipse.help.ui.localSearch.master=true

@@ -1,0 +1,14 @@
+/*
+ * srv_general.h
+ *
+ *  Created on: 14 gen 2026
+ *      Author: emilio
+ */
+
+#ifndef _SRV_GENERAL_H_
+#define _SRV_GENERAL_H_
+
+SRV_GENERAL_WriteTime();
+SRV_GENERAL_ReadTime();
+
+#endif /* _SRV_GENERAL_H_ */

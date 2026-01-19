@@ -1,0 +1,7 @@
+../Middlewares/ST/STM32_WPAN/ble/core/ble_legacy.h:322:12:aci_gatt_allow_read	16	static
+../STM32_WPAN/App/custom_stm.c:129:30:Custom_STM_Event_Handler	64	static
+../STM32_WPAN/App/custom_stm.c:390:6:SVCCTL_InitCustomSvc	56	static
+../STM32_WPAN/App/custom_stm.c:566:12:Custom_STM_App_Update_Char	32	static
+../STM32_WPAN/App/custom_stm.c:655:12:Custom_STM_App_Update_Char_Variable_Length	32	static
+../STM32_WPAN/App/custom_stm.c:744:12:Custom_STM_App_Update_Char_Ext	40	static
+../STM32_WPAN/App/custom_stm.c:826:19:Generic_STM_App_Update_Char_Ext	48	static

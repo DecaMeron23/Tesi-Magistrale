@@ -1,0 +1,10 @@
+09:32:49 **** Incremental Build of configuration Debug for project BSP_TEST_BOARD ****
+make -j8 all 
+arm-none-eabi-size  BSP_TEST_BOARD.elf 
+   text	   data	    bss	    dec	    hex	filename
+  34096	     12	   3852	  37960	   9448	BSP_TEST_BOARD.elf
+Finished building: default.size.stdout
+ 
+
+09:32:49 Build Finished. 0 errors, 0 warnings. (took 65ms)
+

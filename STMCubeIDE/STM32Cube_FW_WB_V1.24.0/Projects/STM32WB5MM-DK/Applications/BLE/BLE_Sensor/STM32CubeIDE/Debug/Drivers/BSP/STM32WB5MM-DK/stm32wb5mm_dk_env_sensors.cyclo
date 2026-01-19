@@ -1,0 +1,10 @@
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:86:9:BSP_ENV_SENSOR_Init	12
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:151:9:BSP_ENV_SENSOR_DeInit	3
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:177:9:BSP_ENV_SENSOR_GetCapabilities	3
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:203:9:BSP_ENV_SENSOR_ReadID	3
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:231:9:BSP_ENV_SENSOR_Enable	4
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:269:9:BSP_ENV_SENSOR_Disable	4
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:308:9:BSP_ENV_SENSOR_GetOutputDataRate	4
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:347:9:BSP_ENV_SENSOR_SetOutputDataRate	4
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:386:9:BSP_ENV_SENSOR_GetValue	4
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_env_sensors.c:431:16:STTS22H_0_Probe	13

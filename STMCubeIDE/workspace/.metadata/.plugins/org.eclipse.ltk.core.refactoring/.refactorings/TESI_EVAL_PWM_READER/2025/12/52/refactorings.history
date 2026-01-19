@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;pwmsignal&apos; to &apos;Library&apos;" description="Move &apos;pwmsignal&apos; to &apos;Library&apos;" destination="Library" element1="pwmsignal" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1766573743909" updateReferences="true"/>
+</session>

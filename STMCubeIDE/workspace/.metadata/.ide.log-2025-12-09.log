@@ -1,0 +1,10 @@
+2025-12-09 07:49:24,089 [INFO] Activator:176 - 
+
+
+2025-12-09 07:49:24,098 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-09 07:49:27,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 09, 2025 7:49:27 AM org.apache.lucene.internal.vectorization.VectorizationProvider lookup
+2025-12-09 07:49:27,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-09 07:49:27,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-09 07:49:27,891 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-09 08:40:23,747 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SWT SessionManagerDBus: Failed to UnregisterClient: GDBus.Error:org.freedesktop.DBus.Error.NoReply: Message recipient disconnected from message bus without replying
+2025-12-09 08:40:24,124 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

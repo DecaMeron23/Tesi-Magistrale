@@ -1,0 +1,28 @@
+/*
+ * srv_pwm_reader.c
+ *
+ *  Created on: 13 gen 2026
+ *      Author: emilio
+ */
+
+#include "srv_pwm_reader.h"
+#include "custom_stm.h"
+#include "stdlib.h"
+#include "app_conf.h"
+#include "stm32_seq.h"
+
+uint32_t getPWM();
+
+void SRV_APP_ReadPWM(uint8_t *CharData)
+{
+	uint32_t freq = getPWM();
+	CharData[0] = freq & 0xFF000000;
+	CharData[1] = freq & 0x00FF0000;
+	CharData[2] = freq & 0x0000FF00;
+	CharData[3] = freq & 0x000000FF;
+}
+
+uint32_t getPWM()
+{
+	return rand() % 10000 + 1000;
+}

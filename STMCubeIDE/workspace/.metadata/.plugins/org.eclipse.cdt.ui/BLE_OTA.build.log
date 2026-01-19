@@ -1,0 +1,7 @@
+14:37:49 **** Build of configuration Release for project BLE_OTA ****
+make -j8 all 
+make: *** No rule to make target '/home/emilio/Utilities/lpm/tiny_lpm/stm32_lpm.c', needed by 'Utilities/stm32_lpm.o'.  Stop.
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+14:37:49 Build Failed. 1 errors, 0 warnings. (took 71ms)
+

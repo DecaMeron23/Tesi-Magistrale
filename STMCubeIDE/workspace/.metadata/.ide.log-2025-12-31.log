@@ -1,0 +1,63 @@
+2025-12-31 16:22:47,074 [INFO] Activator:176 - 
+
+
+2025-12-31 16:22:47,077 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:22:50,253 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:23:28,772 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 31, 2025 4:23:28 PM org.apache.lucene.internal.vectorization.VectorizationProvider lookup
+2025-12-31 16:23:28,773 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-31 16:23:28,773 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-31 16:25:49,242 [INFO] Activator:176 - 
+
+
+2025-12-31 16:25:49,243 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:25:51,814 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:26:47,755 [INFO] Activator:176 - 
+
+
+2025-12-31 16:26:47,757 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:26:50,772 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:28:22,638 [INFO] Activator:176 - 
+
+
+2025-12-31 16:28:22,639 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:28:25,389 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:30:21,651 [INFO] Activator:176 - 
+
+
+2025-12-31 16:30:21,653 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:30:24,253 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:31:02,030 [INFO] Activator:176 - 
+
+
+2025-12-31 16:31:02,032 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:31:04,882 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:31:27,757 [INFO] Activator:176 - 
+
+
+2025-12-31 16:31:27,758 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:31:30,758 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:34:43,595 [INFO] Activator:176 - 
+
+
+2025-12-31 16:34:43,596 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:34:46,287 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:35:15,421 [INFO] Activator:176 - 
+
+
+2025-12-31 16:35:15,422 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:35:18,241 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:35:37,460 [INFO] Activator:176 - 
+
+
+2025-12-31 16:35:37,462 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:35:40,806 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:36:04,319 [INFO] Activator:176 - 
+
+
+2025-12-31 16:36:04,320 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:36:07,201 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-31 16:36:37,719 [INFO] Activator:176 - 
+
+
+2025-12-31 16:36:37,720 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-31 16:36:40,608 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 

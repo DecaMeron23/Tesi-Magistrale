@@ -1,0 +1,26 @@
+/*
+ * application.c
+ *
+ *  Created on: 13 gen 2026
+ *      Author: emilio
+ */
+
+#include "Application/application.h"
+#include "rand"
+
+uint32_t APP_GetFrequency(void)
+{
+
+	return 0;
+}
+
+void APP_StartMeasurement(void)
+{
+
+}
+
+void APP_StopMeasurement(void)
+{
+
+}
+

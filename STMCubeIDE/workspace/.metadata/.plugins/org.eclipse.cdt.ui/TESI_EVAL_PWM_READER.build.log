@@ -1,0 +1,28 @@
+09:15:22 **** Incremental Build of configuration Debug for project TESI_EVAL_PWM_READER ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32WB5Mxx -c -I../Core/Inc -I../Drivers/STM32WBxx_HAL_Driver/Inc -I../Drivers/STM32WBxx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32WBxx/Include -I../Drivers/CMSIS/Include -I"/home/emilio/Documenti/universita/tesi/STMCubeIDE/workspace/LIB_PWM_SIGNAL/pwmsignal" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:47:1: error: unknown type name 'PWMSignal'
+   47 | PWMSignal pwm1;
+      | ^~~~~~~~~
+../Core/Src/main.c:48:1: error: unknown type name 'PWMSignal'
+   48 | PWMSignal pwm2;
+      | ^~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:9: warning: implicit declaration of function 'initialisePWMSignal' [-Wimplicit-function-declaration]
+  113 |         initialisePWMSignal(&pwm1, 4000000L, 40, 1);
+      |         ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:123:25: warning: implicit declaration of function 'getFrequency' [-Wimplicit-function-declaration]
+  123 |                 freq1 = getFrequency(&pwm1);
+      |                         ^~~~~~~~~~~~
+../Core/Src/main.c:124:25: warning: implicit declaration of function 'getDutyCycle' [-Wimplicit-function-declaration]
+  124 |                 duty1 = getDutyCycle(&pwm1);
+      |                         ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'HAL_TIM_IC_CaptureCallback':
+../Core/Src/main.c:347:33: warning: implicit declaration of function 'computeFrequency' [-Wimplicit-function-declaration]
+  347 |                                 computeFrequency(&pwm1, htim, TIM_CHANNEL_1, 1);
+      |                                 ^~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+09:15:22 Build Failed. 3 errors, 4 warnings. (took 219ms)
+

@@ -1,0 +1,27 @@
+/*
+ * pwmsignal.h
+ *
+ *  Created on: 18 dic 2025
+ *      Author: Emilio
+ */
+
+#ifndef PWMSIGNAL_H_
+#define PWMSIGNAL_H_
+
+#include "main.h"
+
+typedef struct
+{
+	uint32_t prec;
+	uint32_t cycle_time;
+	uint32_t up_time;
+} PWMSignal;
+
+void initialisePWMSignal(const uint32_t freq_clk, const uint32_t pre_scaler);
+
+void computeFrequency(PWMSignal *s, TIM_HandleTypeDef *htim, int channel, uint8_t is_rising);
+
+uint32_t getFrequency(PWMSignal *s);
+uint32_t getDutyCycle(PWMSignal *s);
+
+#endif /* PWMSIGNAL_H_ */

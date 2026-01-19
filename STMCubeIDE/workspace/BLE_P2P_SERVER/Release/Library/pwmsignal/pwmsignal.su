@@ -1,0 +1,4 @@
+../Library/pwmsignal/pwmsignal.c:16:6:initialisePWMSignal	0	static
+../Library/pwmsignal/pwmsignal.c:22:6:computeFrequency	16	static
+../Library/pwmsignal/pwmsignal.c:38:10:getFrequency	0	static
+../Library/pwmsignal/pwmsignal.c:43:10:getDutyCycle	8	static

@@ -1,0 +1,13 @@
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:801:13:BLE_UserEvtRx	8	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:652:13:Adv_Request	40	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:821:13:BLE_StatusNot	0	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:715:16:BleGetBdAddress	8	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:137:6:APP_BLE_Init	136	static,ignoring_inline_asm
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:275:28:SVCCTL_App_Notification	8	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:370:6:APP_BLE_Key_Button1_Action	0	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:374:6:APP_BLE_Key_Button2_Action	0	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:378:6:APP_BLE_Key_Button3_Action	0	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:780:6:hci_notify_asynch_evt	0	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:787:6:hci_cmd_resp_release	0	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:794:6:hci_cmd_resp_wait	0	static
+/home/emilio/Documenti/universita/tesi/STMCubeIDE/STM32Cube_FW_WB_V1.24.0/Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Ota/STM32_WPAN/App/app_ble.c:860:6:SVCCTL_ResumeUserEventFlow	0	static

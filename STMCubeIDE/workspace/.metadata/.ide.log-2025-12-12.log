@@ -1,0 +1,61 @@
+2025-12-12 10:48:54,167 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 13:39:11,114 [INFO] Activator:176 - 
+
+
+2025-12-12 13:39:11,116 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-12 13:39:14,147 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 1:39:14 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 13:39:14,148 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Invalid preferences format in /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 13:39:14,148 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 13:39:14,410 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 1:39:14 PM org.apache.lucene.internal.vectorization.VectorizationProvider lookup
+2025-12-12 13:39:14,411 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-12 13:39:14,412 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 13:39:14,428 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-12 13:39:44,136 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 1:39:44 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 13:39:44,136 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Prefs file removed in background /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 13:39:44,136 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 13:41:14,137 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 1:41:14 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 13:41:14,137 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Invalid preferences format in /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 13:41:14,138 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 13:41:44,136 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 1:41:44 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 13:41:44,136 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Prefs file removed in background /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 13:41:44,136 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 15:16:42,140 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2025-12-12 15:16:42,141 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2025-12-12 15:16:42,141 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2025-12-12 18:11:46,722 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 20:12:55,757 [INFO] Activator:176 - 
+
+
+2025-12-12 20:12:55,759 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-12 20:12:58,798 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 8:12:58 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 20:12:58,798 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Invalid preferences format in /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 20:12:58,799 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 20:12:59,578 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-12 20:13:28,781 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 8:13:28 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 20:13:28,783 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Prefs file removed in background /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 20:13:28,783 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 20:18:58,785 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 8:18:58 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 20:18:58,785 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Invalid preferences format in /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 20:18:58,786 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 20:19:28,783 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 8:19:28 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 20:19:28,783 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Prefs file removed in background /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 20:19:28,783 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 21:15:03,631 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 21:27:09,238 [INFO] Activator:176 - 
+
+
+2025-12-12 21:27:09,241 [INFO] Activator:177 - !SESSION log4j initialized
+2025-12-12 21:27:12,365 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 9:27:12 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 21:27:12,365 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Invalid preferences format in /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 21:27:12,366 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 21:27:12,943 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-12-12 21:27:42,344 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 9:27:42 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 21:27:42,345 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Prefs file removed in background /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 21:27:42,345 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 21:39:12,354 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 9:39:12 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 21:39:12,354 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Invalid preferences format in /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 21:39:12,354 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 21:39:42,346 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] dic 12, 2025 9:39:42 PM java.util.prefs.FileSystemPreferences$6 run
+2025-12-12 21:39:42,346 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] AVVERTENZA: Prefs file removed in background /home/emilio/.java/.userPrefs/com/st/library/analyticscore/prefs.xml
+2025-12-12 21:39:42,346 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-12-12 21:40:37,233 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

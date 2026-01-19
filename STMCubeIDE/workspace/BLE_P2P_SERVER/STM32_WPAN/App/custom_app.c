@@ -1,0 +1,275 @@
+/* USER CODE BEGIN Header */
+/**
+ ******************************************************************************
+ * @file    App/custom_app.c
+ * @author  MCD Application Team
+ * @brief   Custom Example Application (Server)
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2026 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
+/* USER CODE END Header */
+
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include "app_common.h"
+#include "dbg_trace.h"
+#include "ble.h"
+#include "custom_app.h"
+#include "custom_stm.h"
+#include "stm32_seq.h"
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+#include "tlc59731.h"
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+typedef struct
+{
+	/* P2P_SERVICE */
+	uint8_t Notify_push_btn_c_Notification_Status;
+	/* USER CODE BEGIN CUSTOM_APP_Context_t */
+	uint8_t BTN1_Status;
+	/* USER CODE END CUSTOM_APP_Context_t */
+
+	uint16_t ConnectionHandle;
+} Custom_App_Context_t;
+
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private defines ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+/* USER CODE END PD */
+
+/* Private macros -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+/**
+ * START of Section BLE_APP_CONTEXT
+ */
+
+static Custom_App_Context_t Custom_App_Context;
+
+/**
+ * END of Section BLE_APP_CONTEXT
+ */
+
+uint8_t UpdateCharData[512];
+uint8_t NotifyCharData[512];
+uint16_t Connection_Handle;
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+/* P2P_SERVICE */
+static void Custom_Notify_push_btn_c_Update_Char(void);
+static void Custom_Notify_push_btn_c_Send_Notification(void);
+
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Functions Definition ------------------------------------------------------*/
+void Custom_STM_App_Notification(Custom_STM_App_Notification_evt_t *pNotification)
+{
+	/* USER CODE BEGIN CUSTOM_STM_App_Notification_1 */
+
+	/* USER CODE END CUSTOM_STM_App_Notification_1 */
+	switch (pNotification->Custom_Evt_Opcode)
+	{
+		/* USER CODE BEGIN CUSTOM_STM_App_Notification_Custom_Evt_Opcode */
+
+		/* USER CODE END CUSTOM_STM_App_Notification_Custom_Evt_Opcode */
+
+		/* P2P_SERVICE */
+		case CUSTOM_STM_LED_CTRL_CHAR_READ_EVT:
+			/* USER CODE BEGIN CUSTOM_STM_LED_CTRL_CHAR_READ_EVT */
+
+			/* USER CODE END CUSTOM_STM_LED_CTRL_CHAR_READ_EVT */
+			break;
+
+		case CUSTOM_STM_LED_CTRL_CHAR_WRITE_NO_RESP_EVT:
+			/* USER CODE BEGIN CUSTOM_STM_LED_CTRL_CHAR_WRITE_NO_RESP_EVT */
+			if (pNotification->DataTransfered.pPayload[1] == 0x01)
+			{
+				HAL_GPIO_WritePin(LED_NUCLEO_GPIO_Port, LED_NUCLEO_Pin, GPIO_PIN_SET);
+				TLC59731_On();
+			}
+			if (pNotification->DataTransfered.pPayload[1] == 0x00)
+			{
+				HAL_GPIO_WritePin(LED_NUCLEO_GPIO_Port, LED_NUCLEO_Pin, GPIO_PIN_RESET);
+				TLC59731_Off();
+			}
+
+			/* USER CODE END CUSTOM_STM_LED_CTRL_CHAR_WRITE_NO_RESP_EVT */
+			break;
+
+		case CUSTOM_STM_NOTIFY_PUSH_BTN_C_NOTIFY_ENABLED_EVT:
+			/* USER CODE BEGIN CUSTOM_STM_NOTIFY_PUSH_BTN_C_NOTIFY_ENABLED_EVT */
+			Custom_App_Context.Notify_push_btn_c_Notification_Status = 1;
+			/* USER CODE END CUSTOM_STM_NOTIFY_PUSH_BTN_C_NOTIFY_ENABLED_EVT */
+			break;
+
+		case CUSTOM_STM_NOTIFY_PUSH_BTN_C_NOTIFY_DISABLED_EVT:
+			/* USER CODE BEGIN CUSTOM_STM_NOTIFY_PUSH_BTN_C_NOTIFY_DISABLED_EVT */
+			Custom_App_Context.Notify_push_btn_c_Notification_Status = 0;
+			/* USER CODE END CUSTOM_STM_NOTIFY_PUSH_BTN_C_NOTIFY_DISABLED_EVT */
+			break;
+
+		case CUSTOM_STM_NOTIFICATION_COMPLETE_EVT:
+			/* USER CODE BEGIN CUSTOM_STM_NOTIFICATION_COMPLETE_EVT */
+
+			/* USER CODE END CUSTOM_STM_NOTIFICATION_COMPLETE_EVT */
+			break;
+
+		default:
+			/* USER CODE BEGIN CUSTOM_STM_App_Notification_default */
+
+			/* USER CODE END CUSTOM_STM_App_Notification_default */
+			break;
+	}
+	/* USER CODE BEGIN CUSTOM_STM_App_Notification_2 */
+
+	/* USER CODE END CUSTOM_STM_App_Notification_2 */
+	return;
+}
+
+void Custom_APP_Notification(Custom_App_ConnHandle_Not_evt_t *pNotification)
+{
+	/* USER CODE BEGIN CUSTOM_APP_Notification_1 */
+
+	/* USER CODE END CUSTOM_APP_Notification_1 */
+
+	switch (pNotification->Custom_Evt_Opcode)
+	{
+		/* USER CODE BEGIN CUSTOM_APP_Notification_Custom_Evt_Opcode */
+
+		/* USER CODE END P2PS_CUSTOM_Notification_Custom_Evt_Opcode */
+		case CUSTOM_CONN_HANDLE_EVT:
+			/* USER CODE BEGIN CUSTOM_CONN_HANDLE_EVT */
+
+			/* USER CODE END CUSTOM_CONN_HANDLE_EVT */
+			break;
+
+		case CUSTOM_DISCON_HANDLE_EVT:
+			/* USER CODE BEGIN CUSTOM_DISCON_HANDLE_EVT */
+
+			/* USER CODE END CUSTOM_DISCON_HANDLE_EVT */
+			break;
+
+		default:
+			/* USER CODE BEGIN CUSTOM_APP_Notification_default */
+
+			/* USER CODE END CUSTOM_APP_Notification_default */
+			break;
+	}
+
+	/* USER CODE BEGIN CUSTOM_APP_Notification_2 */
+
+	/* USER CODE END CUSTOM_APP_Notification_2 */
+
+	return;
+}
+
+void Custom_APP_Init(void)
+{
+	/* USER CODE BEGIN CUSTOM_APP_Init */
+	UTIL_SEQ_RegTask(1 << CFG_TASK__BTN_1_PUSHED_ID, UTIL_SEQ_RFU, Custom_Notify_push_btn_c_Send_Notification);
+
+	Custom_App_Context.Notify_push_btn_c_Notification_Status = 0;
+	Custom_App_Context.BTN1_Status = 0;
+
+	/* USER CODE END CUSTOM_APP_Init */
+	return;
+}
+
+/* USER CODE BEGIN FD */
+
+/* USER CODE END FD */
+
+/*************************************************************
+ *
+ * LOCAL FUNCTIONS
+ *
+ *************************************************************/
+
+/* P2P_SERVICE */
+__USED void Custom_Notify_push_btn_c_Update_Char(void) /* Property Read */
+{
+	uint8_t updateflag = 0;
+
+	/* USER CODE BEGIN Notify_push_btn_c_UC_1*/
+
+	/* USER CODE END Notify_push_btn_c_UC_1*/
+
+	if (updateflag != 0)
+	{
+		Custom_STM_App_Update_Char(CUSTOM_STM_NOTIFY_PUSH_BTN_C, (uint8_t*) UpdateCharData);
+	}
+
+	/* USER CODE BEGIN Notify_push_btn_c_UC_Last*/
+
+	/* USER CODE END Notify_push_btn_c_UC_Last*/
+	return;
+}
+
+void Custom_Notify_push_btn_c_Send_Notification(void) /* Property Notification */
+{
+	uint8_t updateflag = 0;
+
+	/* USER CODE BEGIN Notify_push_btn_c_NS_1*/
+	if (Custom_App_Context.Notify_push_btn_c_Notification_Status)
+	{
+		updateflag = 1;
+
+		if (Custom_App_Context.BTN1_Status == 0)
+		{
+			Custom_App_Context.BTN1_Status = 1;
+			NotifyCharData[0] = 0x00;
+			NotifyCharData[1] = 0x01;
+		}
+		else
+		{
+			Custom_App_Context.BTN1_Status = 0;
+			NotifyCharData[0] = 0x00;
+			NotifyCharData[1] = 0x00;
+		}
+	}
+	/* USER CODE END Notify_push_btn_c_NS_1*/
+
+	if (updateflag != 0)
+	{
+		Custom_STM_App_Update_Char(CUSTOM_STM_NOTIFY_PUSH_BTN_C, (uint8_t*) NotifyCharData);
+	}
+
+	/* USER CODE BEGIN Notify_push_btn_c_NS_Last*/
+
+	/* USER CODE END Notify_push_btn_c_NS_Last*/
+
+	return;
+}
+
+/* USER CODE BEGIN FD_LOCAL_FUNCTIONS*/
+void P2PS_APP_SW1_Button_Action(void)
+{
+	UTIL_SEQ_SetTask(1 << CFG_TASK__BTN_1_PUSHED_ID, CFG_SCH_PRIO_0);
+
+	return;
+}
+/* USER CODE END FD_LOCAL_FUNCTIONS*/
