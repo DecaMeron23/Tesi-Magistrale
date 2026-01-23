@@ -37,7 +37,7 @@ Attenzione la memoria è una NOR, ovvero tutti i bit sono a 1, quando nuova, poi
 
 L'idea è quella di avere:
                                      -------------------------------------------------------------------------------------
-                                    |  0xFF ( 1 Byte ) |  Firmware Version  ( 1/2 Byte ) | Lunghezza pacchetti ( 1 Byte ) |  
+                                    |  0xFF ( 1 Byte ) |  Firmware Version  ( 2 Byte ) | Lunghezza pacchetti ( 1 Byte ) |  
                                      -------------------------------------------------------------------------------------
 
 Quindi per cercare l'ultimo pacchetto caricato fare: 

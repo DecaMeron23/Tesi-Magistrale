@@ -1,0 +1,29 @@
+/**
+ * Libreria per l'utilizzo del led Driver
+ */
+
+#ifndef _TLC59731_H
+#define _TLC59731_H
+
+#include "main.h"
+
+, , LED_RGB_CS_GPIO_Port, LED_RGB_CS_Pin, &htim17
+
+#define TLC59731_TIM			htim17
+#define TLC59731_PWM_PORT		LED_RGB_GPIO_Port
+#define TLC59731_PWM_PIN		LED_RGB_Pin
+#define TLC59731_CS_PORT
+#define TLC59731_CS_PIN
+
+uint8_t TLC59731_Init();
+
+uint8_t TLC59731_SetRGB(uint8_t red, uint8_t green, uint8_t blue);
+
+uint8_t TLC59731_SendRGB(uint8_t red, uint8_t green, uint8_t blue);
+
+uint8_t TLC59731_On();
+uint8_t TLC59731_Off();
+
+uint8_t TLC59731_Toggle();
+
+#endif /* _TLC59731_H */

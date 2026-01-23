@@ -7,10 +7,12 @@
 
 #include "TLC59731.h"
 
-#define TLC59731_MSB_MASK 0x000080
-#define TLC59731_WRITE_COMMAND 0x0000003A
-#define TLC59731_T_CYCLE 25u
-#define TLC59731_PULSE_CYCLE 5u
+extern TIM_HandleTypeDef TLC59731_TIM;
+
+#define TLC59731_MSB_MASK 		0x000080
+#define TLC59731_WRITE_COMMAND 	0x0000003A
+#define TLC59731_T_CYCLE 		25u
+#define TLC59731_PULSE_CYCLE 	5u
 
 void writeByte(uint8_t byte);
 void writeBit_0();
@@ -37,25 +39,14 @@ enum TLC59731_COLOUR
 
 struct TLC59731_TypeDef
 {
-	GPIO_TypeDef *pwm_port;
-	uint16_t pwm_pin;
-	GPIO_TypeDef *select_port;
-	uint16_t select_pin;
-	TIM_HandleTypeDef *tim;
 	uint8_t RGB_value[TLC59731_NUM_COLOUR];
 	enum TLC59731_STATE state;
 };
 
 struct TLC59731_TypeDef led;
 
-uint8_t TLC59731_Init(GPIO_TypeDef *led_pwm_port, uint16_t led_pwm_pin, GPIO_TypeDef *led_select_port,
-		uint16_t led_select_pin, TIM_HandleTypeDef *tim)
+uint8_t TLC59731_Init()
 {
-	led.pwm_port = led_pwm_port;
-	led.pwm_pin = led_pwm_pin;
-	led.select_port = led_select_port;
-	led.select_pin = led_select_pin;
-	led.tim = tim;
 	led.state = TLC59731_STATE_OFF;
 	TLC59731_SetRGB(0x00, 0x00, 0x00);
 	TLC59731_Off();
@@ -109,7 +100,7 @@ uint8_t TLC59731_Toggle()
  */
 uint8_t writeData(uint8_t *RGB)
 {
-	HAL_GPIO_WritePin(led.select_port, led.select_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(TLC59731_CS_PORT, TLC59731_CS_PIN, GPIO_PIN_SET);
 
 	startTimer();
 
@@ -126,7 +117,7 @@ uint8_t writeData(uint8_t *RGB)
 
 	stopTimer();
 
-	HAL_GPIO_WritePin(led.select_port, led.select_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(TLC59731_CS_PORT, TLC59731_CS_PIN, GPIO_PIN_RESET);
 
 	return 0;
 }
@@ -186,23 +177,21 @@ void writeBit_1()
 
 void pulsePin()
 {
-	HAL_GPIO_WritePin(led.pwm_port, led.pwm_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(TLC59731_PWM_PORT, TLC59731_PWM_PIN, GPIO_PIN_SET);
 	delayMicro(TLC59731_PULSE_CYCLE);
-	HAL_GPIO_WritePin(led.pwm_port, led.pwm_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(TLC59731_PWM_PORT, TLC59731_PWM_PIN, GPIO_PIN_RESET);
 }
 
 void startTimer()
 {
 
-	HAL_TIM_Base_Start(led.tim);
+	HAL_TIM_Base_Start(&TLC59731_TIM);
 }
 
 void stopTimer()
 {
-	HAL_TIM_Base_Stop(led.tim);
+	HAL_TIM_Base_Stop(&TLC59731_TIM);
 }
-
-
 
 /**
  * Ipotesi Il timer va a 32MHz
@@ -210,8 +199,8 @@ void stopTimer()
 void delayMicro(uint32_t delay)
 {
 	delay *= 32;
-	uint16_t start = __HAL_TIM_GET_COUNTER(led.tim);
-	while (__HAL_TIM_GET_COUNTER(led.tim) - start < delay)
+	uint16_t start = __HAL_TIM_GET_COUNTER(&TLC59731_TIM);
+	while (__HAL_TIM_GET_COUNTER(&TLC59731_TIM) - start < delay)
 	{
 	}
 }

@@ -32,7 +32,8 @@ Core/Src/MX25L4x/MX25L4x.o: ../Core/Src/MX25L4x/MX25L4x.c \
  ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_exti.h \
  ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_hal_spi.h \
  ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_hal_spi_ex.h \
- ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_system.h
+ ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_system.h \
+ ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_hal_def.h
 ../Core/Src/MX25L4x/MX25L4x.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_hal.h:
@@ -68,3 +69,4 @@ Core/Src/MX25L4x/MX25L4x.o: ../Core/Src/MX25L4x/MX25L4x.c \
 ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_hal_spi.h:
 ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_hal_spi_ex.h:
 ../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_system.h:
+../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_hal_def.h:

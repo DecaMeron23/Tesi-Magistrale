@@ -7,13 +7,17 @@
 
 #include "main.h"
 
-uint8_t TLC59731_Init(GPIO_TypeDef *led_pwm_port, uint16_t led_pwm_pin, GPIO_TypeDef *led_select_port,
-		uint16_t led_select_pin, TIM_HandleTypeDef *tim);
+#define TLC59731_TIM			htim17
+#define TLC59731_PWM_PORT		LED_RGB_GPIO_Port
+#define TLC59731_PWM_PIN		LED_RGB_Pin
+#define TLC59731_CS_PORT		LED_RGB_CS_GPIO_Port
+#define TLC59731_CS_PIN			LED_RGB_CS_Pin
 
-uint8_t TLC59731_SetRGB(uint8_t red , uint8_t green, uint8_t blue);
+uint8_t TLC59731_Init();
 
-uint8_t TLC59731_SendRGB(uint8_t red , uint8_t green, uint8_t blue);
+uint8_t TLC59731_SetRGB(uint8_t red, uint8_t green, uint8_t blue);
 
+uint8_t TLC59731_SendRGB(uint8_t red, uint8_t green, uint8_t blue);
 
 uint8_t TLC59731_On();
 uint8_t TLC59731_Off();

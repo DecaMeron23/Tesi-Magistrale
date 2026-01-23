@@ -119,7 +119,7 @@ int main(void)
 
 	HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
 	HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_2);
-	TLC59731_Init(LED_RGB_GPIO_Port, LED_RGB_Pin, LED_RGB_CS_GPIO_Port, LED_RGB_CS_Pin, &htim17);
+	TLC59731_Init();
 	TLC59731_SetRGB(5, 25, 5);
   /* USER CODE END 2 */
 
