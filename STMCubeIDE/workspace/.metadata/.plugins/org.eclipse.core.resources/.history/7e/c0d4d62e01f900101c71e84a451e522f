@@ -1,0 +1,87 @@
+/*
+ * MX25L4006E.h
+ *
+ *  Created on: 16 gen 2026
+ *      Author: emilio
+ */
+
+#ifndef _MX25L4_MX25L4_H
+#define _MX25L4_MX25L4_H
+
+#include "main.h"
+#include "stdbool.h"
+
+#define MX25L4_SPI	 		hspi1 						/**< Definizione dell'handler per la SPI, da modificare in base all'utilizzo*/
+#define MX25L4_HOLD_Pin 	HOLD_FLASH_Pin				/**< Definizione del pin HOLD per la memoria, da modificare in base all'utilizzo*/
+#define MX25L4_HOLD_Port 	HOLD_FLASH_GPIO_Port		/**< Definizione della porta HOLD per la memoria, da modificare in base all'utilizzo*/
+#define MX25L4_CS_Pin 		CS_FLASH_Pin				/**< Definizione del pin Chip Select per la SPI, da modificare in base all'utilizzo*/
+#define MX25L4_CS_Port 		CS_FLASH_GPIO_Port			/**< Definizione della porta Chip Select per la SPI, da modificare in base all'utilizzo*/
+
+#define MX25L4_ID			0xC22013					/**< Valore del ID identificativo: C2 (Manufacturer), 20 (tipo di memoria) e 13 (ID device)*/
+
+#define MX25L4_PACKET_SIZE	90							/**< Dimensioni dei pacchetti di memoria */
+#define MX25L4_FIRMWARE_VERSION	0						/**< Versione del firmware */
+
+/**
+ * Inizializzazione della Memoria
+ *
+ * @retvalue	true in caso di esito positivo altrimenti false
+ *
+ */
+bool MX25L4_Init(void);
+
+/**
+ * Lettura dell'ID del dispositivo.
+ *
+ * @param aID	[out] ID del dispositivo (3-byte)
+ *
+ * @retvalue	true in caso di esito positivo altrimenti false
+ *
+ */
+bool MX25L4_ReadID(uint8_t *aID);
+
+/**
+ * Lettura della memoria a partire da uno specifico indirizzo
+ *
+ * @param data 		[out] Buffer dove verranno posti i dati letti
+ * @param size		Quantità di Byte da leggere
+ * @param address	Indirizzo di partenza
+ *
+ * @retvalue		true in caso di esito positivo altrimenti false
+ *
+ *
+ */
+bool MX25L4_ReadData(uint8_t *pData, uint16_t size, uint32_t address);
+
+/**
+ * Pone il dispositivo in modalità Deep Power
+ *
+ * @retvalue	true in caso di esito positivo altrimenti false
+ */
+bool MX25L4_Sleep();
+
+/**
+ * Rilascia il dispostitivo dalla modalità Deep Power
+ *
+ * @retvalue	true in caso di esito positivo altrimenti false
+ */
+bool MX25L4_Wakeup();
+
+/**
+ * Indica se la memoria è impegnata in qualche operazione
+ *
+ * @return true se la memoria sta eseguendo delle operazioni, altrimenti false.
+ */
+bool MX25L4_isOccupied();
+
+/**
+ * Scrive i dati sulla memoria
+ * @param pData			puntatore all'array da scrivere in memoria
+ * @param size			numero di elementi da scirvere in memoria
+ * @param address		[out] Indirizzo di memoria dove sono stati salvati i dati
+ *
+ * @retvalue			true in caso di esito positivo altrimenti false
+ */
+bool MX25L4_WriteData(uint8_t *pData, uint16_t size, uint32_t *address);
+
+#endif /* _MX25L4_MX25L4_H */

@@ -94,12 +94,11 @@ int main(void)
 	MX_SPI1_Init();
 	/* USER CODE BEGIN 2 */
 
-//	MX25L4_Init();
-//
-//	bool isOccupied = MX25L4_isOccupied();
-//
-//	MX25L4_ReadID(memID);
-//	MX25L4_ReadData(data, 100, 0x0);
+	MX25L4_Init();
+	MX25L4_ReadID(memID);
+	bool isOccupied = MX25L4_isOccupied();
+
+	MX25L4_ReadData(data, 100, 0x0);
 
 	/* USER CODE END 2 */
 

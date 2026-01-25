@@ -78,7 +78,8 @@ bool MX25L4_isOccupied();
  * Scrive i dati sulla memoria
  * @param pData			puntatore all'array da scrivere in memoria
  * @param size			numero di elementi da scirvere in memoria
- * @param address[out]	indirizzo di memoria dove sono stati salvati i dati
+ * @param address		[out] indirizzo di memoria dove sono stati salvati i dati, se non iteressa inserire NULL#include "capitolo2/file2.typ"
+ *
  *
  * @retvalue			true in caso di esito positivo altrimenti false
  */

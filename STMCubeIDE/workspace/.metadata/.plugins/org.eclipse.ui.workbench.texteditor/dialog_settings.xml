@@ -3,6 +3,11 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="WREN"/>
+		<item value="MX25L4_CMD_WREN"/>
+		<item value="MX25L4_NUM_BYTE_HEADER"/>
+		<item value="0xFF"/>
+		<item value="[4]"/>
 		<item value="MX25L4006E_"/>
 		<item value=","/>
 		<item value="/*&lt;"/>
@@ -13,11 +18,6 @@
 		<item value="HAL_TIM_IC_CaptureCallback"/>
 		<item value="s-&gt;"/>
 		<item value="%d"/>
-		<item value="Asynchronous"/>
-		<item value="RTC"/>
-		<item value="_weak"/>
-		<item value="HRSAPP_MEASUREMENT_INTERVAL"/>
-		<item value="CFG_RTC_AS"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="724"/>

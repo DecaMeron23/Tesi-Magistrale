@@ -104,7 +104,7 @@
 	</section>
 	<section name="RefactoringWizard.preview">
 		<item key="width" value="600"/>
-		<item key="height" value="400"/>
+		<item key="height" value="406"/>
 	</section>
 	<section name="ExtractFunctionWizard">
 		<item key="AccessModifier" value="private"/>
@@ -117,5 +117,7 @@
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
 	</section>
 	<section name="PDOMSearchPage">
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
 	</section>
 </section>
