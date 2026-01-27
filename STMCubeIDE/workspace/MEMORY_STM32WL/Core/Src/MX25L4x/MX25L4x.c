@@ -42,7 +42,7 @@ extern SPI_HandleTypeDef MX25L4_SPI;
 #define MX25L4_FORWARD_CHECK 	8	/**< Numero di byte da controllare per determinare che quel bocco è libero
 non può essere inferiore all'header della memoria, ovvero "MX25L4_HEADER_BYTE_NUM" */
 
-#if  MX25L4_FORWARD_CHECK  < MX25L4_HEADER_BYTE_NUM // Controllo che nonscenda sotto 4 byte
+#if  MX25L4_FORWARD_CHECK  < MX25L4_HEADER_BYTE_NUM // Controllo che non diventi più piccolo dell'header
 #undef MX25L4_FORWARD_CHECK
 #define MX25L4_FORWARD_CHECK MX25L4_HEADER_BYTE_NUM
 #endif
@@ -53,16 +53,20 @@ non può essere inferiore all'header della memoria, ovvero "MX25L4_HEADER_BYTE_N
 #define MX25L4_BYTE2(VAL)	((VAL >> 16) & 0xFF)
 #define MX25L4_BYTE3(VAL)	((VAL >> 24) & 0xFF)
 
+#define MX25L4_MIN(V1 , V2)	(V1 > V2 ? V2 : V1)
+
+// define a scopo di debug e testing
 #define MX25L4_DEBUG
+#define MX25L4_TEST
 //***********************************************************
 //++++++++++++ Definizione Variabili Private ++++++++++++++++
 //***********************************************************
 
 typedef struct
 {
-	uint8_t packetSize; /**< Dimensione del pacchetto */
-	uint16_t firmwareVersion; /**< Versione del firmware */
-	uint32_t addrFreeSpace; /**< Ultimo indirizzo scritto */
+	uint8_t packetSize; 		//!< Dimensione del pacchetto
+	uint16_t firmwareVersion; 	//!< Versione del firmware
+	uint32_t addrFreeSpace; 	//!< Ultimo indirizzo scritto
 } MX25L4_TypeDef;
 
 MX25L4_TypeDef memoryContext;
@@ -374,62 +378,89 @@ bool MEM_IsFree(uint8_t *pData, uint8_t size)
 
 bool MEM_Write(uint8_t *pData, uint16_t size, uint32_t addr)
 {
-
 	bool isOK = true;
 
 	uint8_t cmdWREN = MX25L4_CMD_WREN;
-	uint8_t *cmdWRITE = malloc((size_t) (size + 1 + 3)); // TODO da chiedere se va bene
+	uint8_t payLoad = 1 + 3; // payLoad per inviare il comando: CMD + ADD1 + ADD2 + ADD3
+	// Creo un'area di memoria continua (comando + indirizzo + dati) in modo tale da
+	uint8_t *cmdWRITE = malloc((size_t) (payLoad + MX25L4_MIN(size, MX25L4_MEM_PAGE))); // TODO da chiedere se va bene
 
+	// verifica se si è riusciti ad allocare la memoria
 	if (cmdWRITE == NULL)
 	{
 		return false;
 	}
 
-	uint16_t daScrivere = 0;
-	bool stop = false;
+	uint16_t byteLiberi = 0;	// Numero di byte liberi per la pagina attuale
+	uint16_t daScrivere = 0; 	// dati da scrivere attraverso uno comando
+	bool stop = false; 			// Indica se si deve concludere il ciclo while
+
+	cmdWRITE[0] = MX25L4_CMD_PP;
 
 	while (!stop)
 	{
-		if (size > 256) // TODO ma se non siamo a inizio pagina i byte eccessivi verranno scritti all'inizio, verificare
-		// che indirizzo sia a 0x00, in caso contrario scrivere solo i byte che riempiono la pagina
+
+#ifdef MX25L4_TEST // TODO da verificare il TEST
+		byteLiberi = MX25L4_MEM_PAGE - MX25L4_BYTE0(addr);
+		// Scrivo solo i dati che ci stanno nella pagina oppure quelli che devo scrivere
+		daScrivere = MX25L4_MIN(byteLiberi, size);
+#else
+		// se l'indirizzo finale è diverso da 0x00 scriviamo solo i dati che ci stanno nella pagina attuale
+		if (MX25L4_BYTE0(addr) != 0x00)
 		{
-			daScrivere = MX25L4_MEM_PAGE;
-			size -= MX25L4_MEM_PAGE;
+			// in questo IF, se ci si entra, si entra solo alla prima iterazione, poiché tutte le successive o riempiono
+			// la pagina (quindi altri cicli partono con BYTE0(addr) == 0xFF) oppure scrivono i Byte rimanenti, quindi non
+			// ci sono cicli successvi
+			daScrivere = MX25L4_MEM_PAGE - MX25L4_BYTE0(addr); // scrivo solo i dati che ci stanno
+		}
+		else if (size > MX25L4_MEM_PAGE) // Se il size è maggiore della dimensione della pagina scrivamo solo 256 byte
+		{
+			daScrivere = MX25L4_MEM_PAGE; // Scrivo la pagina intera
 		}
 		else
 		{
-			daScrivere = size;
-			size = 0;
-			stop = true;
+			daScrivere = size; // scrivo gli ultimi byte
 		}
+#endif // TEST -- IF PIÙ EFFICIENTE
 
-		cmdWRITE[0] = MX25L4_CMD_PP;
+		// scrittura degli indirizzi nel comando
 		cmdWRITE[1] = MX25L4_BYTE2(addr);
 		cmdWRITE[2] = MX25L4_BYTE1(addr);
 		cmdWRITE[3] = MX25L4_BYTE0(addr);
 
-		memcpy(cmdWRITE + 4, pData, daScrivere);
+		// copia dei dati in memoria (dopo il payload)
+		memcpy(cmdWRITE + payLoad, pData, daScrivere);
+
+		// Abilitazione della scrittura
+		SPI_SendCMD(&cmdWREN, 1, MX25L4_MAX_CMD_TIME);
 
 		CS_Select();
-		isOK &= SPI_Transmit(&cmdWREN, 1, MX25L4_MAX_CMD_TIME);
 
 		// Scrittura dei dati
-		isOK &= SPI_Transmit(cmdWRITE, daScrivere, MX25L4_MAX_RW_TIME);
+		isOK &= SPI_Transmit(cmdWRITE, daScrivere + payLoad, MX25L4_MAX_RW_TIME); // scrittura
 
-#ifdef MX25L4_DEBUG
+#ifdef MX25L4_DEBUG // Verifica se sono stati scritti
+		HAL_Delay(10); // aspettiamo che i dati vengano scritti
 		uint8_t registerValue = 0;
-		MEM_ReadRegister(&registerValue);
+		MEM_ReadRegister(&registerValue); // leggiamo i registri
 #endif
 
 		CS_Unselect();
 
-		addr += daScrivere;
+		// Operazioni finali
+		pData += daScrivere; 	// Sposto il puntatore dei dati su quelli non ancora letti
+		addr += daScrivere;		// Sposto l'indirizzo di memoria su cui scrivere
+		size -= daScrivere;		// Riduco il numero di dati da scrivere
+		if (size == 0) 			// se abbiamo finito di scrivere mi fermo
+		{
+			stop = true;
+		}
 	}
 
-	// Dichiaro che le celle di memoria prima sono state scritte
+	// Il prossimo indirizzo libero dove poter scrivere
 	memoryContext.addrFreeSpace += size;
 
-	return false;
+	return isOK;
 }
 
 bool MEM_ReadRegister(uint8_t *pData)
