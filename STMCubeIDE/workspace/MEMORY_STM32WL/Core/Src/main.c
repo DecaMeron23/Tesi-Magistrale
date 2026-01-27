@@ -44,9 +44,9 @@
 SPI_HandleTypeDef hspi1;
 
 /* USER CODE BEGIN PV */
-uint8_t memID[3] =
-{ 0, 0, 0 };
-uint8_t data[100];
+uint32_t memID;
+uint8_t pData[10];
+uint8_t readData[500];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,10 +95,27 @@ int main(void)
 	/* USER CODE BEGIN 2 */
 
 	MX25L4_Init();
-	MX25L4_ReadID(memID);
-	bool isOccupied = MX25L4_isOccupied();
+	// TODO ORA DI TESTARE LA EREASE
 
-	MX25L4_ReadData(data, 100, 0x0);
+//	MX25L4_ReadData(readData, 100, 1170);
+//
+//	uint32_t addr;
+//	pData[0] = 0xBB;
+//	pData[1] = 0xBB;
+//	pData[2] = 0xBB;
+//	pData[3] = 0xBB;
+//	pData[4] = 0xBB;
+//	pData[5] = 0x00;
+//	pData[6] = 0x00;
+//	pData[7] = 0x00;
+//	pData[8] = 0x00;
+//	pData[9] = 0x00;
+//
+//	// Test - scrivo 5 dati
+//	MX25L4_WriteData(pData, 5, &addr);
+//
+//	MX25L4_ReadData(readData, 100, addr-50);
+
 
 	/* USER CODE END 2 */
 

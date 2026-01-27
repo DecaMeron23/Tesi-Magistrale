@@ -17,10 +17,10 @@
 #define MX25L4_CS_Pin 		CS_FLASH_Pin				//!< Definizione del pin Chip Select per la SPI, da modificare in base all'utilizzo
 #define MX25L4_CS_Port 		CS_FLASH_GPIO_Port			//!< Definizione della porta Chip Select per la SPI, da modificare in base all'utilizzo
 
-#define MX25L4_ID			0xC22013					//!< Valore del ID identificativo: C2 (Manufacturer), 20 (tipo di memoria) e 13 (ID device)
+#define MX25L4_ID			0x00C22013					//!< Valore del ID identificativo: C2 (Manufacturer), 20 (tipo di memoria) e 13 (ID device)
 
-#define MX25L4_PACKET_SIZE	90							//!< Dimensioni dei pacchetti di memoria
-#define MX25L4_FIRMWARE_VERSION	0						//!< Versione del firmware
+#define MX25L4_PACKET_SIZE			10					//!< Dimensioni dei pacchetti di memoria
+#define MX25L4_FIRMWARE_VERSION		3					//!< Versione del firmware
 
 /**
  * Inizializzazione della Memoria
@@ -33,12 +33,10 @@ bool MX25L4_Init(void);
 /**
  * Lettura dell'ID del dispositivo.
  *
- * @param aID	[out] ID del dispositivo (3-byte)
- *
- * @retvalue	true in caso di esito positivo altrimenti false
+ * @retvalue ID del dispositivo, il byte più significativo è posto a zero. Vale zero se c'è stato un errore
  *
  */
-bool MX25L4_ReadID(uint8_t *aID);
+uint32_t MX25L4_ReadID();
 
 /**
  * Lettura della memoria a partire da uno specifico indirizzo
