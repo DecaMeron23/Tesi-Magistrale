@@ -1,10 +1,17 @@
-22:50:01 **** Incremental Build of configuration Debug for project MEMORY_STM32WL ****
+13:41:16 **** Incremental Build of configuration Debug for project MEMORY_STM32WL ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/MX25L4x/MX25L4x.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DCORE_CM4 -DUSE_HAL_DRIVER -DSTM32WL5Mxx -c -I../Core/Inc -I../Drivers/STM32WLxx_HAL_Driver/Inc -I../Drivers/STM32WLxx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32WLxx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/MX25L4x/MX25L4x.d" -MT"Core/Src/MX25L4x/MX25L4x.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/MX25L4x/MX25L4x.o"
+arm-none-eabi-gcc -o "MEMORY_STM32WL.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/emilio/Documenti/universita/tesi/STMCubeIDE/workspace/MEMORY_STM32WL/STM32WL5MOCHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MEMORY_STM32WL.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MEMORY_STM32WL.elf
+ 
 arm-none-eabi-size  MEMORY_STM32WL.elf 
+arm-none-eabi-objdump -h -S MEMORY_STM32WL.elf  > "MEMORY_STM32WL.list"
    text	   data	    bss	    dec	    hex	filename
-  14408	     92	   2524	  17024	   4280	MEMORY_STM32WL.elf
+  14216	     92	   2004	  16312	   3fb8	MEMORY_STM32WL.elf
 Finished building: default.size.stdout
  
+Finished building: MEMORY_STM32WL.list
+ 
 
-22:50:01 Build Finished. 0 errors, 0 warnings. (took 78ms)
+13:41:17 Build Finished. 0 errors, 0 warnings. (took 270ms)
 

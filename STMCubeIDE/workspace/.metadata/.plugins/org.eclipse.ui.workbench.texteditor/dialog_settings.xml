@@ -3,6 +3,8 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="/**&lt;"/>
+		<item value="Write"/>
 		<item value="*/"/>
 		<item value="**&lt;"/>
 		<item value="WREN"/>
@@ -16,8 +18,6 @@
 		<item value="moficare"/>
 		<item value="hrtc"/>
 		<item value="Prescaler"/>
-		<item value="(sPWMSignal)"/>
-		<item value="HAL_TIM_IC_CaptureCallback"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="724"/>

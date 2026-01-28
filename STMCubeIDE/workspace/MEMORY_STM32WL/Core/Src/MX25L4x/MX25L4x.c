@@ -12,35 +12,36 @@
 extern SPI_HandleTypeDef MX25L4_SPI;
 
 // Informazioni sulla memoria
-#define MX25L4_MEM_BLOCK 	8			/**< Numero di blocchi di memoria */
-#define MX25L4_MEM_SECTOR 	16			/**< Numero di settori per blocco */
-#define MX25L4_MEM_PAGE 	256			/**< Byte per settore (page)*/
+#define MX25L4_MEM_BLOCK 	8		//!< Numero di blocchi di memoria
+#define MX25L4_MEM_SECTOR 	16		//!< Numero di settori per blocco
+#define MX25L4_MEM_PAGE 	256		//!< Byte per settore (page)
+#define MX25L4_MEM_START	0xBD0	//!< Primo indirizzo disponibile della memoria
 
 // Define dei comandi
-#define MX25L4_CMD_WREN 0x06		/**< Write Enable: comando di abilitazione alla scrittura*/
-#define MX25L4_CMD_WRDI 0x04		/**< Write Disable: comando di disabilitazione alla scrittura*/
-#define MX25L4_CMD_RDID 0x9F		/**< Read Id: comando di lettura dell'ID del produttore più 2-Byte di ID della memoria*/
-#define MX25L4_CMD_RDSR 0x05		/**< Read Status Register: comando di lettura dei registri della memoria */
-#define MX25L4_CMD_READ 0x03		/**< Read: Comando di lettura, sono necessari 3 parametri e che il CS sia LOW */
-#define MX25L4_CMD_SE	0x20		/**< Selector Erease: pone a HIGH tutti i bit del settore, necessita di 3 parametri */
-#define MX25L4_CMD_BE 	0x52		/**< Block Erease: pone a HIGH tutti i bit del blocco, necessita di 3 parametri */
-#define MX25L4_CMD_CE 	0x60		/**< Chip Erease: pone a HIGH tutti i bit del chip */
-#define MX25L4_CMD_DP 	0xB9		/**< Deep Power: il dispositivo va in modalità low power*/
-#define MX25L4_CMD_RDP 	0xAB		/**< Release Deep Power: il dispositivo esce dalla modalità low power*/
-#define MX25L4_CMD_PP	0x02		/**< Page Program: scrittura della memoria */
+#define MX25L4_CMD_WREN 0x06		//!< Write Enable: comando di abilitazione alla scrittura
+#define MX25L4_CMD_WRDI 0x04		//!< Write Disable: comando di disabilitazione alla scrittura
+#define MX25L4_CMD_RDID 0x9F		//!< Read Id: comando di lettura dell'ID del produttore più 2-Byte di ID della memoria
+#define MX25L4_CMD_RDSR 0x05		//!< Read Status Register: comando di lettura dei registri della memoria
+#define MX25L4_CMD_READ 0x03		//!< Read: Comando di lettura, sono necessari 3 parametri e che il CS sia LOW
+#define MX25L4_CMD_SE	0x20		//!< Selector Erease: pone a HIGH tutti i bit del settore, necessita di 3 parametri
+#define MX25L4_CMD_BE 	0x52		//!< Block Erease: pone a HIGH tutti i bit del blocco, necessita di 3 parametri
+#define MX25L4_CMD_CE 	0x60		//!< Chip Erease: pone a HIGH tutti i bit del chip
+#define MX25L4_CMD_DP 	0xB9		//!< Deep Power: il dispositivo va in modalità low power
+#define MX25L4_CMD_RDP 	0xAB		//!< Release Deep Power: il dispositivo esce dalla modalità low power
+#define MX25L4_CMD_PP	0x02		//!< Page Program: scrittura della memoria
 
 // Definizione dei timeout
-#define MX25L4_MAX_RW_TIME 3000u  	/**< Tempo massimo per la lettura e scrittura*/
-#define MX25L4_MAX_CMD_TIME 100u  	/**< Tempo massimo per l'invio dei comandi*/
+#define MX25L4_MAX_RW_TIME 3000u  	//!< Tempo massimo per la lettura e scrittura
+#define MX25L4_MAX_CMD_TIME 100u  	//!< Tempo massimo per l'invio dei comandi
 
 // Definizione dell'header
-#define MX25L4_HEADER_BYTE_0 0xFF	/**< Valore del primo Byte dell'header. TODO proposta di header */
-#define MX25L4_HEADER_BYTE_1 0x55 	/**< Valore del secondo Byte dell'header. TODO proposta di header */
-#define MX25L4_HEADER_BYTE_NUM	4	/**< Dimensione in byte dell'header*/
+#define MX25L4_HEADER_BYTE_0 0xFF	//!< Valore del primo Byte dell'header. TODO proposta di header
+#define MX25L4_HEADER_BYTE_1 0x55 	//!< Valore del secondo Byte dell'header. TODO proposta di header
+#define MX25L4_HEADER_BYTE_NUM	4	//!< Dimensione in byte dell'header
 
 // Ricerca memoria
-#define MX25L4_FORWARD_CHECK 	8	/**< Numero di byte da controllare per determinare che quel bocco è libero
-non può essere inferiore all'header della memoria, ovvero "MX25L4_HEADER_BYTE_NUM" */
+#define MX25L4_FORWARD_CHECK 	8	//!< Numero di byte da controllare per determinare che quel bocco è libero
+//!<non può essere inferiore all'header della memoria, ovvero "MX25L4_HEADER_BYTE_NUM"
 
 #if  MX25L4_FORWARD_CHECK  < MX25L4_HEADER_BYTE_NUM // Controllo che non diventi più piccolo dell'header
 #undef MX25L4_FORWARD_CHECK
@@ -55,16 +56,13 @@ non può essere inferiore all'header della memoria, ovvero "MX25L4_HEADER_BYTE_N
 
 #define MX25L4_MIN(V1 , V2)	(V1 > V2 ? V2 : V1)
 
-
 //***********************************************************
 //++++++++++++ Definizione Variabili Private ++++++++++++++++
 //***********************************************************
 
 typedef struct
 {
-	uint8_t packetSize; 		//!< Dimensione del pacchetto
-	uint8_t firmwareVersion; 	//!< Versione del firmware
-	uint32_t addrFreeSpace; 	//!< Ultimo indirizzo scritto
+	uint32_t addrFreeSpace; 	//!< Primo indirizzo libero
 } MX25L4_TypeDef;
 
 MX25L4_TypeDef memoryContext;
@@ -97,13 +95,6 @@ bool SPI_Receive(uint8_t *pData, uint16_t Size, uint32_t Timeout);
  * Invio di un comando singolo con SPI, attiva e disattiva in automatico il chip select
  */
 bool MEM_SendCMD(uint8_t *pData, uint16_t Size, uint32_t Timeout);
-
-/**
- * Inizzializza il contesto
- *
- * @param pData		Array con i 4 Byte dell'header
- */
-bool MEM_UpdateContext(uint8_t *pData);
 
 /**
  * Ricerca del primo blocco libero, modifica il contesto
@@ -163,24 +154,22 @@ bool MX25L4_Init(void)
 	bool isOK = true;
 
 	// Inizzializzazione del contesto
-	memoryContext.packetSize = 0;
-	memoryContext.firmwareVersion = 0;
-	memoryContext.addrFreeSpace = 0;
+	memoryContext.addrFreeSpace = MX25L4_MEM_START;
 
 	// Inizializzazione - CS e HOLD
 	CS_Unselect();
 	HAL_GPIO_WritePin(MX25L4_HOLD_Port, MX25L4_HOLD_Pin, GPIO_PIN_SET);
 
 	// Inizializzazione - SPI [GIÀ FATTO NEL MAIN.. DEVO FARLO?]
-	//isOK &= HAL_SPI_Init(&MX25L4_hspi) == HAL_OK;
+	isOK &= HAL_SPI_Init(&MX25L4_SPI) == HAL_OK;
 
 	// Verifica del funzionamento del dispositivo
 	isOK &= MX25L4_ReadID() == MX25L4_ID;
 
 	// inizializzazione del contesto della memoria
-	if (!MEM_FindFreeSpace(0x00)) // se vero -> header non trovato!
+	if (!MEM_FindFreeSpace(MX25L4_MEM_START)) // Eseguiamo la ricerca, se ritorna falso dobbiamo scrivere l'header
 	{
-		MEM_WriteHeader(0x00); // scrittura dell'header
+		MEM_WriteHeader(memoryContext.addrFreeSpace); // scrittura dell'header
 	}
 
 	return isOK;
@@ -204,10 +193,8 @@ uint32_t MX25L4_ReadID()
 
 	id = pID[0] << 16 | pID[1] << 8 | pID[2];
 
-	if (!isOK)
-	{
-		id = 0;
-	}
+	id = isOK ? id : 0;
+
 	return id;
 }
 
@@ -309,52 +296,48 @@ bool MEM_SendCMD(uint8_t *pData, uint16_t Size, uint32_t Timeout)
 
 }
 
-bool MEM_UpdateContext(uint8_t *pData)
+bool MEM_FindFreeSpace(uint32_t addr)
 {
-	memoryContext.firmwareVersion = pData[2];
-	memoryContext.packetSize = pData[3];
-	return true;
-}
-
-bool MEM_FindFreeSpace(uint32_t start_address)
-{
+	bool isOK = true;
 	bool stop = false;
 	uint8_t pData[MX25L4_FORWARD_CHECK];
-
-	MX25L4_ReadData(pData, MX25L4_FORWARD_CHECK, start_address);
+	uint8_t firmwareVers = 0;
+	uint8_t packetSize = 0;
+	MX25L4_ReadData(pData, MX25L4_FORWARD_CHECK, addr);
 	if (!MEM_IsHeader(pData))
-	{
+	{	// Impossibile inizzializzare il contesto
 		return false;
 	}
 
-	MEM_UpdateContext(pData); // Aggiorniamo il contesto della memoria
-
-	uint32_t addr = start_address + MX25L4_HEADER_BYTE_NUM; // partiamo a leggere dal primo blocco libero
-
+	firmwareVers = pData[2];
+	packetSize = pData[3];
+	addr += MX25L4_HEADER_BYTE_NUM;
 	// Ciclo di scan della memoria
 	while (!stop)
 	{
-		MX25L4_ReadData(pData, MX25L4_FORWARD_CHECK, addr);
+		MX25L4_ReadData(pData, MX25L4_FORWARD_CHECK, addr); // lettura della memoria
 
-		if (MEM_IsHeader(pData)) // Se vero -> Aggiorniamo il contesto della memoria
+		if (MEM_IsHeader(pData)) // Se troviamo un header aggiorniamo il contesto
 		{
-			MEM_UpdateContext(pData);
+			firmwareVers = pData[2];
+			packetSize = pData[3];
+			addr += MX25L4_HEADER_BYTE_NUM; // spostiamo l'indirizzo
 		}
-		else if (MEM_IsFree(pData, MX25L4_FORWARD_CHECK)) // se vero -> ci fermiamo e aggiorniamo il contesto
+		else if (MEM_IsFree(pData, MX25L4_FORWARD_CHECK)) // se è memoria libera ci fermiamo.
 		{
-			if (memoryContext.firmwareVersion != MX25L4_FIRMWARE_VERSION) // se vero -> scriviamo l'header della nuova versione
-			{
-				MEM_WriteHeader(addr);
-				addr += MX25L4_HEADER_BYTE_NUM;
-			}
-			memoryContext.addrFreeSpace = addr;
+			// verifichiamo se la versione del firmware trovata è uguale a quella dichiarata
+			isOK &= (firmwareVers == MX25L4_FIRMWARE_VERSION);
 			stop = true;
 		}
-
-		addr += memoryContext.packetSize; // Continuiamo ad avanzare
+		else // Memoria occupata
+		{
+			addr += packetSize; // avanziamo di un pacchetto
+		}
 	}
 
-	return true;
+	memoryContext.addrFreeSpace = addr;
+
+	return isOK;
 }
 
 bool MEM_WriteHeader(uint32_t addr)
@@ -364,6 +347,7 @@ bool MEM_WriteHeader(uint32_t addr)
 	{ MX25L4_HEADER_BYTE_0, MX25L4_HEADER_BYTE_1, MX25L4_FIRMWARE_VERSION, MX25L4_PACKET_SIZE };
 
 	isOK &= MEM_Write(pData, MX25L4_HEADER_BYTE_NUM, addr);
+	memoryContext.addrFreeSpace += MX25L4_HEADER_BYTE_NUM; 	// Aggiorniamo l'indirizzo libero
 	return isOK;
 }
 
@@ -395,7 +379,7 @@ bool MEM_Write(uint8_t *pData, uint16_t size, uint32_t addr)
 
 	uint8_t cmdWREN = MX25L4_CMD_WREN;
 	uint8_t payLoad = 1 + 3; // payLoad per inviare il comando: CMD + ADD1 + ADD2 + ADD3
-	// Creo un'area di memoria continua (comando + indirizzo + dati) in modo tale da
+	// Creo un'area di memoria continua (comando + indirizzo + dati)
 	uint8_t *cmdWRITE = malloc((size_t) (payLoad + MX25L4_MIN(size, MX25L4_MEM_PAGE))); // TODO da chiedere se va bene
 
 	// verifica se si è riusciti ad allocare la memoria
@@ -413,7 +397,8 @@ bool MEM_Write(uint8_t *pData, uint16_t size, uint32_t addr)
 	while (!stop)
 	{
 
-		byteLiberi = MX25L4_MEM_PAGE - MX25L4_BYTE0(addr);
+		byteLiberi = MX25L4_MEM_PAGE - MX25L4_BYTE0(addr); // Byte disponibili in questa pagina
+
 		// Scrivo solo i dati che ci stanno nella pagina oppure quelli che devo scrivere
 		daScrivere = MX25L4_MIN(byteLiberi, size);
 
@@ -435,10 +420,7 @@ bool MEM_Write(uint8_t *pData, uint16_t size, uint32_t addr)
 		pData += daScrivere; 	// Sposto il puntatore dei dati su quelli non ancora letti
 		addr += daScrivere;		// Sposto l'indirizzo di memoria su cui scrivere
 		size -= daScrivere;		// Riduco il numero di dati da scrivere
-		if (size == 0) 			// se abbiamo finito di scrivere mi fermo
-		{
-			stop = true;
-		}
+		stop = (size <= 0);		// se abbiamo finito di scrivere mi fermo
 	}
 
 	return isOK;

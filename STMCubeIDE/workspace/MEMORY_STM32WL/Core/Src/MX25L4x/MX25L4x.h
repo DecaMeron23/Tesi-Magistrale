@@ -1,8 +1,16 @@
 /*
- * MX25L4006E.h
+ * MX25L4x.h
  *
- *  Created on: 16 gen 2026
- *      Author: emilio
+ *  Created on: 16 Gennaio 2026
+ *      Author: Emilio Meroni
+ */
+
+/**
+ * !!!!!!!!!!!!!!! ATTENZIONE !!!!!!!!!!!!!!!!!!!
+ * PRIMA DI AVVIARE CONTROLLARE:
+ * -> VERIFICARE CHE LA SPI SIA IMPOSTATA CON WORD DI 8-BIT (1 BYTE)
+ * -> VERIFICARE CHE LA SPI SIA QUELLA CORRETTA
+ * -> VERIFICARE CHE LE PORTE PER HOLD E CS SIANO CORRETTE
  */
 
 #ifndef _MX25L4_MX25L4_H
@@ -19,8 +27,8 @@
 
 #define MX25L4_ID			0x00C22013					//!< Valore del ID identificativo: C2 (Manufacturer), 20 (tipo di memoria) e 13 (ID device)
 
-#define MX25L4_PACKET_SIZE			10					//!< Dimensioni dei pacchetti di memoria
-#define MX25L4_FIRMWARE_VERSION		3					//!< Versione del firmware
+#define MX25L4_PACKET_SIZE			6					//!< Dimensioni dei pacchetti di memoria
+#define MX25L4_FIRMWARE_VERSION		5					//!< Versione del firmware
 
 /**
  * Inizializzazione della Memoria
