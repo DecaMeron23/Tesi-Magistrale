@@ -45,8 +45,7 @@ SPI_HandleTypeDef hspi1;
 
 /* USER CODE BEGIN PV */
 uint32_t memID;
-uint8_t pData[10];
-uint8_t readData[2000];
+uint8_t pData[50];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

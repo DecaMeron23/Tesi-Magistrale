@@ -14,8 +14,9 @@ extern SPI_HandleTypeDef MX25L4_SPI;
 // Informazioni sulla memoria
 #define MX25L4_MEM_BLOCK 	8		//!< Numero di blocchi di memoria
 #define MX25L4_MEM_SECTOR 	16		//!< Numero di settori per blocco
-#define MX25L4_MEM_PAGE 	256		//!< Byte per settore (page)
-#define MX25L4_MEM_START	0xBD0	//!< Primo indirizzo disponibile della memoria
+#define MX25L4_MEM_PAGE 	4096	//!< Byte per settore (page)
+#define MX25L4_MEM_START	0		//!< Primo indirizzo disponibile della memoria
+#define MX25L4_MEM_MAX 		MX25L4_MEM_PAGE * MX25L4_MEM_SECTOR * MX25L4_MEM_BLOCK	//!< Indirizzo massimo
 
 // Define dei comandi
 #define MX25L4_CMD_WREN 0x06		//!< Write Enable: comando di abilitazione alla scrittura
@@ -95,6 +96,11 @@ bool SPI_Receive(uint8_t *pData, uint16_t Size, uint32_t Timeout);
  * Invio di un comando singolo con SPI, attiva e disattiva in automatico il chip select
  */
 bool MEM_SendCMD(uint8_t *pData, uint16_t Size, uint32_t Timeout);
+
+/**
+ * Invio del comando che abilita alla scrittura
+ */
+bool MEM_SendEnableWrite();
 
 /**
  * Ricerca del primo blocco libero, modifica il contesto
@@ -200,6 +206,10 @@ uint32_t MX25L4_ReadID()
 
 bool MX25L4_ReadData(uint8_t *pData, uint16_t size, uint32_t address)
 {
+	if (address + size > MX25L4_MEM_MAX || address > MX25L4_MEM_MAX)
+	{
+		return false;
+	}
 	uint8_t isOK = true;
 	uint8_t cmd[4] =
 	{ MX25L4_CMD_READ, MX25L4_BYTE2(address), MX25L4_BYTE1(address), MX25L4_BYTE0(address) };
@@ -256,6 +266,37 @@ bool MX25L4_WriteData(uint8_t *pData, uint16_t size, uint32_t *address)
 	return isOK;
 }
 
+bool MX25L4_SectorErase(uint32_t addr)
+{
+	bool isOK = true;
+	uint8_t cmd[4] =
+	{ MX25L4_CMD_SE, MX25L4_BYTE2(addr), MX25L4_BYTE1(addr), MX25L4_BYTE0(addr) };
+
+	isOK &= MEM_SendEnableWrite();
+	isOK &= MEM_SendCMD(cmd, 4, MX25L4_MAX_CMD_TIME);
+	return isOK;
+}
+
+bool MX25L4_BlockErase(uint32_t addr)
+{
+	bool isOK = true;
+	uint8_t cmd[4] =
+	{ MX25L4_CMD_BE, MX25L4_BYTE2(addr), MX25L4_BYTE1(addr), MX25L4_BYTE0(addr) };
+
+	isOK &= MEM_SendEnableWrite();
+	isOK &= MEM_SendCMD(cmd, 4, MX25L4_MAX_CMD_TIME);
+	return isOK;
+}
+
+bool MX25L4_ChipErase()
+{
+	bool isOK = true;
+	uint8_t cmd = MX25L4_CMD_CE;
+
+	isOK &= MEM_SendEnableWrite();
+	isOK &= MEM_SendCMD(&cmd, 1, MX25L4_MAX_CMD_TIME);
+	return isOK;
+}
 //***********************************************************
 //++++++++++++++++ Funzioni Private ++++++++++++++++++++++++++
 //***********************************************************
@@ -294,6 +335,12 @@ bool MEM_SendCMD(uint8_t *pData, uint16_t Size, uint32_t Timeout)
 
 	return isOK;
 
+}
+
+bool MEM_SendEnableWrite()
+{
+	uint8_t cmd = MX25L4_CMD_WREN;
+	return MEM_SendCMD(&cmd, 1, MX25L4_MAX_CMD_TIME);
 }
 
 bool MEM_FindFreeSpace(uint32_t addr)
@@ -376,8 +423,6 @@ bool MEM_IsFree(uint8_t *pData, uint8_t size)
 bool MEM_Write(uint8_t *pData, uint16_t size, uint32_t addr)
 {
 	bool isOK = true;
-
-	uint8_t cmdWREN = MX25L4_CMD_WREN;
 	uint8_t payLoad = 1 + 3; // payLoad per inviare il comando: CMD + ADD1 + ADD2 + ADD3
 	// Creo un'area di memoria continua (comando + indirizzo + dati)
 	uint8_t *cmdWRITE = malloc((size_t) (payLoad + MX25L4_MIN(size, MX25L4_MEM_PAGE))); // TODO da chiedere se va bene
@@ -411,10 +456,9 @@ bool MEM_Write(uint8_t *pData, uint16_t size, uint32_t addr)
 		memcpy(cmdWRITE + payLoad, pData, daScrivere);
 
 		// Abilitazione della scrittura
-		MEM_SendCMD(&cmdWREN, 1, MX25L4_MAX_CMD_TIME);
-
+		isOK &= MEM_SendEnableWrite();
 		// Esecuzione scrittura
-		MEM_SendCMD(cmdWRITE, daScrivere + payLoad, MX25L4_MAX_RW_TIME);
+		isOK &= MEM_SendCMD(cmdWRITE, daScrivere + payLoad, MX25L4_MAX_RW_TIME);
 
 		// Operazioni finali
 		pData += daScrivere; 	// Sposto il puntatore dei dati su quelli non ancora letti

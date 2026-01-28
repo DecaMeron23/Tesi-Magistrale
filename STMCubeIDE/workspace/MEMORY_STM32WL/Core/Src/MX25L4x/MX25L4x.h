@@ -27,8 +27,8 @@
 
 #define MX25L4_ID			0x00C22013					//!< Valore del ID identificativo: C2 (Manufacturer), 20 (tipo di memoria) e 13 (ID device)
 
-#define MX25L4_PACKET_SIZE			6					//!< Dimensioni dei pacchetti di memoria
-#define MX25L4_FIRMWARE_VERSION		5					//!< Versione del firmware
+#define MX25L4_PACKET_SIZE			10					//!< Dimensioni dei pacchetti di memoria
+#define MX25L4_FIRMWARE_VERSION		1					//!< Versione del firmware
 
 /**
  * Inizializzazione della Memoria
@@ -90,5 +90,28 @@ bool MX25L4_isOccupied();
  * @retvalue			true in caso di esito positivo altrimenti false
  */
 bool MX25L4_WriteData(uint8_t *pData, uint16_t size, uint32_t *address);
+
+/**
+ * Restet di un settore della memoria
+ * @param addr		Indirizzo del settore.
+ *
+ * @retval			true, in caso di esito positivo
+ */
+bool MX25L4_SectorErase(uint32_t addr);
+
+/**
+ * Restet di un blocco della memoria
+ * @param addr		Indirizzo del blocco.
+ *
+ * @retval			true, in caso di esito positivo
+ */
+bool MX25L4_BlockErase(uint32_t addr);
+
+/**
+ * Restet di tutta la memoria
+ *
+ * @retval			true, in caso di esito positivo
+ */
+bool MX25L4_ChipErase();
 
 #endif /* _MX25L4_MX25L4_H */
